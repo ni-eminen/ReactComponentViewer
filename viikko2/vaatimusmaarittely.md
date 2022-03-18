@@ -32,7 +32,7 @@ The UX flow of the application is self explanatory. Starting from the login scre
 - Edit components
 - Delete components
 
-## Further refining
+## Further refinement
 
 After the MVP the application could be enriched via the following features
 
