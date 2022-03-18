@@ -1,0 +1,112 @@
+t 59eed7e5d0998ae586216b4d6133c8785cdb2d57
+Author: Matias Nieminen <matiasnie2@gmail.com>
+Date:   Tue Nov 9 18:11:44 2021 +0200
+
+    changes.
+
+ tiedostoja/file3 | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit c54135da09c938e77e8e34e74d22a2f4b2aaafdd
+Author: Matias Nieminen <matiasnie2@gmail.com>
+Date:   Tue Nov 9 18:04:36 2021 +0200
+
+    tiedostoja
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 2002308bc4cb797889239c79e5c12b4465390d69
+Author: Matias Nieminen <matiasnie2@gmail.com>
+Date:   Tue Nov 9 17:55:28 2021 +0200
+
+    k
+
+ eka.txt      | 1 +
+ tiedosto.txt | 1 -
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+
+commit a6b28084fca3b7705715749f6ff66282c86fe03d
+Author: Matias Nieminen <matiasnie2@gmail.com>
+Date:   Tue Nov 9 17:49:51 2021 +0200
+
+    test
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 97c567b604d28d46fbd947f09e70d09e882d34d5
+Author: Matias Nieminen <matiasnie2@gmail.com>
+Date:   Tue Nov 9 17:49:35 2021 +0200
+
+    test
+
+ toinen.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 5164bb3b7a8e328859d0531d5d26afb582d0d027
+Author: Matias Nieminen <matiasnie2@gmail.com>
+Date:   Tue Nov 9 17:38:58 2021 +0200
+
+    test2
+
+ tiedosto.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 7c5ea0d1ca997bcbc565ec32f95009783a3f382a
+Author: Matias Nieminen <matiasnie2@gmail.com>
+Date:   Tue Nov 9 17:38:36 2021 +0200
+
+    test
+
+ tiedosto.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit d92b4b985cea40504e7fcc9a8a0901e7daa499bb
+Author: Matias Nieminen <matiasnie2@gmail.com>
+Date:   Tue Nov 9 17:31:45 2021 +0200
+
+    added directory
+
+ stuff/tied.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 68e901472930b6627010043c15904839a5648868
+Author: Matias Nieminen <matiasnie2@gmail.com>
+Date:   Tue Nov 9 17:31:11 2021 +0200
+
+    chnages
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 65cce5fad06db64aab49725fbd6ffc46247a052d
+Author: Matias Nieminen <matiasnie2@gmail.com>
+Date:   Tue Nov 9 17:30:06 2021 +0200
+
+    kolmas
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit c8d4129b0afd1dd2ca044a71a451d49fa3fb2096
+Author: Matias Nieminen <matiasnie2@gmail.com>
+Date:   Tue Nov 9 17:26:38 2021 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 1939d373741e0aa11b4128c41ff395234214975c
+Author: Matias Nieminen <matiasnie2@gmail.com>
+Date:   Tue Nov 9 17:12:08 2021 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
