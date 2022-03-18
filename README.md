@@ -1,12 +1,12 @@
- # Ohjelmistotekniikan git-repositorio
+ # ReactComponentViewer
  ## Contents
- ### Dokumentaatio</br>
- [gitlog](https://github.com/ni-eminen/ohjelmistotekniikka/blob/main/laskarit/viikko1/gitlog.txt)</br>
- [komentorivi](https://github.com/ni-eminen/ohjelmistotekniikka/blob/main/laskarit/viikko1/komentorivi.txti)</br>
- [vaatimusmäärittely](https://github.com/ni-eminen/ohjelmistotekniikka/blob/main/laskarit/viikko2/vaatimusmaarittely.md)</br>
- [tyoaikakirjanpito](https://github.com/ni-eminen/ohjelmistotekniikka/blob/main/tyoaikakirjanpito.md)</br>
+ ### Documentation</br>
+ [gitlog](https://github.com/ni-eminen/ReactComponentViewer/blob/main/viikko1/gitlog.txt)
+ [komentorivi](https://github.com/ni-eminen/ReactComponentViewer/blob/main/viikko1/komentorivi.txt)
+ [vaatimusmäärittely](https://github.com/ni-eminen/ReactComponentViewer/blob/main/viikko2/vaatimusmaarittely.md)</br>
+  
  ## Asennus
- 1. Navigate to workout-app folder
+ 1. Navigate to ReactComponentViewer folder
  2. Install dependencies:
  
  ```bash
