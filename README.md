@@ -5,7 +5,7 @@
  [komentorivi](https://github.com/ni-eminen/ReactComponentViewer/blob/main/viikko1/komentorivi.txt)</br>
  [vaatimusmäärittely](https://github.com/ni-eminen/ReactComponentViewer/blob/main/viikko2/vaatimusmaarittely.md)</br>
   
- ## Asennus
+ ## Installation
  1. Navigate to ReactComponentViewer folder
  2. Install dependencies:
  
