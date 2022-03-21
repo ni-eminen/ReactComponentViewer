@@ -1,9 +1,9 @@
  # ReactComponentViewer
  ## Contents
  ### Documentation</br>
- [gitlog](https://github.com/ni-eminen/ReactComponentViewer/blob/main/viikko1/gitlog.txt)</br>
- [komentorivi](https://github.com/ni-eminen/ReactComponentViewer/blob/main/viikko1/komentorivi.txt)</br>
- [vaatimusmäärittely](https://github.com/ni-eminen/ReactComponentViewer/blob/main/viikko2/vaatimusmaarittely.md)</br>
+ [gitlog](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/gitlog.txt)</br>
+ [komentorivi](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/komentorivi.txt)</br>
+ [vaatimusmäärittely](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/vaatimusmaarittely.md)</br>
   
  ## Asennus
  1. Navigate to ReactComponentViewer folder
@@ -27,11 +27,4 @@
  poetry run invoke start
  ```
  
- ### Pytest
- 
- Once implemented, tests can be run by executing the following command:
- 
- ```bash
- poetry run invoke test
- ```
 
