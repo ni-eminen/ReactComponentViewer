@@ -2,8 +2,8 @@
  ## Contents
  ### Documentation</br>
  [gitlog](https://github.com/ni-eminen/ReactComponentViewer/blob/main/viikko1/gitlog.txt)</br>
- [komentorivi](https://github.com/ni-eminen/ReactComponentViewer/blob/main/viikko1/komentorivi.txt)</br>
- [vaatimusmäärittely](https://github.com/ni-eminen/ReactComponentViewer/blob/main/viikko2/vaatimusmaarittely.md)</br>
+ [command line](https://github.com/ni-eminen/ReactComponentViewer/blob/main/viikko1/komentorivi.txt)</br>
+ [requirement specification](https://github.com/ni-eminen/ReactComponentViewer/blob/main/viikko2/vaatimusmaarittely.md)</br>
   
  ## Installation
  1. Navigate to ReactComponentViewer folder
