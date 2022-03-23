@@ -5,8 +5,8 @@
 ### Documentation</br>
 
 [gitlog](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/gitlog.txt)</br>
-[komentorivi](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/komentorivi.txt)</br>
-[vaatimusmäärittely](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/vaatimusmaarittely.md)</br>
+[command line](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/komentorivi.txt)</br>
+[requirement spec](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/vaatimusmaarittely.md)</br>
 
 ## Installation
 
