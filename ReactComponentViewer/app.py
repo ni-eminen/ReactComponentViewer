@@ -1,11 +1,12 @@
 # Import the required libraries
 from tkinter import *
 import webview
-# import requests
+import requests
 
-# url = 'http://www.localhost:3000/api/component'
-# myobj = {'component': '<a>link</a>'}
-# x = requests.post(url, data = myobj)
+url = 'http://www.localhost:3000/api/component'
+myobj = {'component': '<a>link</a>'}
+x = requests.post(url, data = myobj)
+print(x)
 
 # Create an instance of tkinter frame or window
 win = Tk()
