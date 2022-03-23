@@ -1,11 +1,16 @@
 [tool.poetry]
-name = "reactcomponentviewer"
+name = "webview"
 version = "0.1.0"
 description = ""
 authors = ["ni-eminen <matiasnie2@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+tk = "^0.1.0"
+pywebview = "^3.6.2"
+QtPy = "^2.0.1"
+PyQt5 = "^5.15.6"
+requests = "^2.27.1"
 
 [tool.poetry.dev-dependencies]
 
