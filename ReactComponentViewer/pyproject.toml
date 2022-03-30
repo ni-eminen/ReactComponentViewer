@@ -11,6 +11,7 @@ pywebview = "^3.6.2"
 QtPy = "^2.0.1"
 PyQt5 = "^5.15.6"
 requests = "^2.27.1"
+Pygments = "^2.11.2"
 
 [tool.poetry.dev-dependencies]
 
