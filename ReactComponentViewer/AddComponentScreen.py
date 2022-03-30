@@ -6,7 +6,6 @@ import idlelib.colorizer as ic
 import idlelib.percolator as ip
 import re
 import pygments
-import pyro
 
 class AddComponentScreen(tk.Frame):
     def __init__(self, parent, controller):
