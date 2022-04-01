@@ -18,7 +18,7 @@ Be sure to checkout the backend code for this project at [RCV-backend](https://g
 ```bash
 poetry install
 ```
-# if pywebview is not working after poetry install, it is likely you need additional dependencies:
+#### if pywebview is not working after poetry install, it is likely you need additional dependencies:
 
 Linux:
 ```bash
