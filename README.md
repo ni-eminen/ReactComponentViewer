@@ -18,8 +18,19 @@ Be sure to checkout the backend code for this project at [RCV-backend](https://g
 ```bash
 poetry install
 ```
+# if pywebview is not working after poetry install, it is likely you need additional dependencies:
 
-3.  Run the program via Poetry:
+Linux:
+```bash
+pip install pywebview[qt]
+```
+
+Windows:
+```bash
+pip install pywebview[cef]
+```
+
+3.  Run the program via Poetry
 
 ```bash
 poetry run invoke start

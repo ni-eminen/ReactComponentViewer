@@ -75,8 +75,6 @@ class AddComponentScreen(tk.Frame):
             print()
             print(string_json)
             print()
-            
-            print()
             print()
             print()
 

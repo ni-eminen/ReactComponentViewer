@@ -18,6 +18,14 @@ python-versions = ">=3.5.0"
 unicode_backport = ["unicodedata2"]
 
 [[package]]
+name = "idle"
+version = "1.0.4"
+description = "Alternavtive of notepad"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "idna"
 version = "3.3"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -220,7 +228,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "a98e77ab2365a7acc3ec3bfbc5a728b16b851085cb82944bac6281b150352173"
+content-hash = "47cdf19e81ce910fafb948b0d7d654f4c9b96501415136147f53b6dcb3993d10"
 
 [metadata.files]
 certifi = [
@@ -230,6 +238,10 @@ certifi = [
 charset-normalizer = [
     {file = "charset-normalizer-2.0.12.tar.gz", hash = "sha256:2857e29ff0d34db842cd7ca3230549d1a697f96ee6d3fb071cfa6c7393832597"},
     {file = "charset_normalizer-2.0.12-py3-none-any.whl", hash = "sha256:6881edbebdb17b39b4eaaa821b438bf6eddffb4468cf344f09f89def34a8b1df"},
+]
+idle = [
+    {file = "idle-1.0.4-py3-none-any.whl", hash = "sha256:d73339d9ef930f1538d8d2bf9ab7ab3fd6c8c790cebcef8a61dc388c74fb2cfd"},
+    {file = "idle-1.0.4.tar.gz", hash = "sha256:1e3ea39c7a258ecda56c704eae1fc490476ca7b458523f76fd01371661b61c3c"},
 ]
 idna = [
     {file = "idna-3.3-py3-none-any.whl", hash = "sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff"},
