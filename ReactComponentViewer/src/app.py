@@ -22,14 +22,15 @@ import requests
 # webview.create_window('build', "react_build.html")
 # webview.start()
 
-#----------------------------------------
+# ----------------------------------------
 # sample app
 
 class ReactComponentViewer(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
 
-        self.title_font = tkfont.Font(family='Helvetica', size=18, weight="bold", slant="italic")
+        self.title_font = tkfont.Font(
+            family='Helvetica', size=18, weight="bold", slant="italic")
         self.geometry('600x600')
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
@@ -42,13 +43,15 @@ class ReactComponentViewer(tk.Tk):
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=2)
         container.grid_columnconfigure(1, weight=10)
-        
-        sidebar = Frame(container,bg='#89CFF0')
-        sidebar.grid(row=0,column=0, sticky='nsew')
+
+        sidebar = Frame(container, bg='#89CFF0')
+        sidebar.grid(row=0, column=0, sticky='nsew')
 
         # Make the buttons with the icons to be shown
-        home_b = Button(sidebar, command=lambda: self.show_frame('ComponentsScreen'), bg='orange',relief='flat', text='Components')
-        set_b = Button(sidebar, command=lambda: self.show_frame('AddComponentScreen'),bg='orange',relief='flat', text='Add component')
+        home_b = Button(sidebar, command=lambda: self.show_frame(
+            'ComponentsScreen'), bg='orange', relief='flat', text='Components')
+        set_b = Button(sidebar, command=lambda: self.show_frame(
+            'AddComponentScreen'), bg='orange', relief='flat', text='Add component')
 
         home_b.pack(pady=10)
         set_b.pack(pady=10)
@@ -75,9 +78,6 @@ class ReactComponentViewer(tk.Tk):
         '''Show a frame for the given page name'''
         frame = self.frames[page_name]
         frame.tkraise()
-
-
-
 
 
 if __name__ == "__main__":
