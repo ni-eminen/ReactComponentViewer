@@ -17,6 +17,7 @@
           +String username
           +String id
           +Piece piece
+          +Int money
       }
       class Piece{
         +Tile onSquare
