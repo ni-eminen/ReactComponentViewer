@@ -10,6 +10,25 @@ Be sure to checkout the backend code for this project at [RCV-backend](https://g
 [command line](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/komentorivi.txt)</br>
 [requirement spec](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/vaatimusmaarittely.md)</br>
 
+### UML
+```mermaid
+ classDiagram
+      class User{
+          +String username
+          +String id
+          +swim()
+          +quack()
+      }
+      class Fish{
+          -int sizeInFeet
+          -canEat()
+      }
+      class Zebra{
+          +bool is_wild
+          +run()
+      }
+ ```
+
 ## Installation
 
 1.  Navigate to ReactComponentViewer folder
