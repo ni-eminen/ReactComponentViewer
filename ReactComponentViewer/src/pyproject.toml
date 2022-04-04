@@ -9,12 +9,9 @@ python = "^3.8"
 requests = "^2.27.1"
 pywebview = "^3.6.2"
 invoke = "^1.7.0"
-<<<<<<< HEAD
 pytest = "^7.1.1"
-=======
 pep8 = "^1.7.1"
 Pygments = "^2.11.2"
->>>>>>> 103d26019194c6547d9b4d7612a198e524e175aa
 
 [tool.poetry.dev-dependencies]
 coverage = "^6.3.2"
