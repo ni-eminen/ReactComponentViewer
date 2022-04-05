@@ -12,25 +12,6 @@ Be sure to checkout the backend code for this project at [RCV-backend](https://g
 [timetable](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/timetable.md)</br>
 [changelog](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/changelog.md)</br>
 
-### UML
-```mermaid
- classDiagram
-      class User{
-          +String username
-          +String id
-          +swim()
-          +quack()
-      }
-      class Fish{
-          -int sizeInFeet
-          -canEat()
-      }
-      class Zebra{
-          +bool is_wild
-          +run()
-      }
- ```
-
 ## Installation
 
 1.  Navigate to ReactComponentViewer folder
@@ -39,17 +20,6 @@ Be sure to checkout the backend code for this project at [RCV-backend](https://g
 ```bash
 poetry install
 ```
-#### if pywebview is not working after poetry install, it is likely you need additional dependencies:
-
-Linux:
-```bash
-pip install pywebview[qt]
-```
-
-Windows:
-```bash
-pip install pywebview[cef]
-```
 
 3.  Run the program via Poetry
 
@@ -57,12 +27,19 @@ pip install pywebview[cef]
 poetry run invoke start
 ```
 
-## Command-line functionalities
-
+	
 ### Running the program
-
-Run the program by executing the following commands:
-
+Simply run:
 ```bash
 poetry run invoke start
 ```
+### Testing
+```bash
+poetry run invoke test
+```
+### Test coverage
+Generate the test coverage via:
+```bash
+poetry run invoke coverage-report
+```
+A report will be generated to ReactComponentViewer root file.
