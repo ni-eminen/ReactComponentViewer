@@ -31,7 +31,7 @@ class ReactComponentViewer(tk.Tk):
 
         self.title_font = tkfont.Font(
             family='Helvetica', size=18, weight="bold", slant="italic")
-        self.geometry('600x600')
+        self.geometry('500x700')
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
 
@@ -81,6 +81,10 @@ class ReactComponentViewer(tk.Tk):
     def show_frame(self, page_name):
         '''Show a frame for the given page name'''
         frame = self.frames[page_name]
+        print(f'{frame.screen_size}+{self.winfo_x()}+{self.winfo_y()}')
+        self.geometry(
+            f'{frame.screen_size}+{self.winfo_x()}+{self.winfo_y()-24}')
+
         frame.tkraise()
 
 

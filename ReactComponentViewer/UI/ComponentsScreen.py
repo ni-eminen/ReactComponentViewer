@@ -4,6 +4,7 @@ import tkinter as tk
 class ComponentsScreen(tk.Frame):
     def __init__(self, parent, controller, db):
         tk.Frame.__init__(self, parent)
+        self.screen_size = '1000x700'
         self.controller = controller
         label = tk.Label(self, text="Your Components Screen",
                          font=controller.title_font)

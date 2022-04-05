@@ -1,7 +1,7 @@
 import bcrypt
 from sqlalchemy import Column, Integer, String, Table, Column, Integer, String, MetaData, inspect, create_engine, select, insert
 
-saltrounds = 16
+saltrounds = 10
 
 
 class Database:
@@ -38,14 +38,8 @@ class Database:
         salt = bcrypt.gensalt(rounds=saltrounds)
         hashed = bcrypt.hashpw(password.encode('utf8'), salt)
 
-        print(username)
-        print(hashed)
-
         ins = insert(self.users_table).values(
             username=username, password=hashed)
-        print(str(ins))
-        self.conn.execute(ins)
-        # cur.execute(f"insert into users (username, password) values ('{username}', '{hashed}');")
 
     def verify_password(self, username, password):
         users_table = self.users_table

@@ -7,11 +7,11 @@ from database import Database
 class LoginScreen(tk.Frame):
     def __init__(self, parent, controller, db):
         tk.Frame.__init__(self, parent)
+        self.screen_size = '500x700'
         self.db = db
         self.controller = controller
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
-        controller.geometry('500x700')
 
         mainframe = tk.Frame(self, bg='white')
         mainframe.grid(row=0, column=0, sticky='nsew')

@@ -10,6 +10,7 @@ import webbrowser
 class AddComponentScreen(tk.Frame):
     def __init__(self, parent, controller, db):
         tk.Frame.__init__(self, parent)
+        self.screen_size = '1000x700'
         self.controller = controller
 
         self.grid_columnconfigure(0, weight=1)
