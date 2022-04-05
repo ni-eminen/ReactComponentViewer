@@ -1,4 +1,5 @@
 poetry.lock
+ReactComponentViewer/react_build.html
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
