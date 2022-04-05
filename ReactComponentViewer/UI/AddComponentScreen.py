@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import END, Button, Frame, Canvas, Widget, Text
-import webview
 import requests
 # import idlelib.colorizer as ic
 # import idlelib.percolator as ip
