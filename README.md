@@ -9,6 +9,8 @@ Be sure to checkout the backend code for this project at [RCV-backend](https://g
 [gitlog](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/gitlog.txt)</br>
 [command line](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/komentorivi.txt)</br>
 [requirement spec](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/vaatimusmaarittely.md)</br>
+[timetable](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/timetable.md)</br>
+[changelog](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/changelog.md)</br>
 
 ### UML
 ```mermaid
