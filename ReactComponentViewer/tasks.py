@@ -12,6 +12,11 @@ def start(ctx):
 
 
 @task
+def which(ctx):
+    ctx.run("which python", pty=True)
+
+
+@task
 def coverage(ctx):
     ctx.run("coverage run --branch -m pytest", pty=True)
 
