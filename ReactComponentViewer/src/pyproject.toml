@@ -1,20 +1,15 @@
 [tool.poetry]
-name = "reactcomponentviewer"
+name = "src"
 version = "0.1.0"
 description = ""
 authors = ["ni-eminen <matiasnie2@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-requests = "^2.27.1"
+bcrypt = "^3.2.0"
 pywebview = "^3.6.2"
-invoke = "^1.7.0"
-pytest = "^7.1.1"
-pep8 = "^1.7.1"
-Pygments = "^2.11.2"
 
 [tool.poetry.dev-dependencies]
-coverage = "^6.3.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

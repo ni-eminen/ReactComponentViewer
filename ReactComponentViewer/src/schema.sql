@@ -6,5 +6,6 @@ CREATE TABLE users(
 
 CREATE TABLE components(
   id INTEGER NOT NULL PRIMARY KEY,
+  ownder_id TEXT
   component TEXT
 )

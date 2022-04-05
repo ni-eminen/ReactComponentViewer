@@ -5,7 +5,6 @@ import requests
 import idlelib.colorizer as ic
 import idlelib.percolator as ip
 import re
-import pygments
 
 
 class AddComponentScreen(tk.Frame):
@@ -56,35 +55,12 @@ class AddComponentScreen(tk.Frame):
             text_editor.get('1.0', END)), text='Render component')
         render_button.grid(column=0, row=0, sticky='e')
 
-        # Make the buttons with the icons to be shown
-        # home_b = Button(frame,bg='orange',relief='flat')
-        # set_b = Button(frame,bg='orange',relief='flat')
-        # ring_b = Button(frame,bg='orange',relief='flat')
-
-        # Put them on the frame
-        # home_b.grid(row=0,column=0,pady=10)
-        # set_b.grid(row=1,column=0,pady=50)
-        # ring_b.grid(row=2,column=0)
-
-        # Bind to the frame, if entered or left
-        # frame.bind('<Enter>',lambda e: expand())
-        # frame.bind('<Leave>',lambda e: contract())
-
         def render_component(component):
             print(component)
             url = 'http://www.localhost:3000/api/component'
             string_json = '{{"component": "{c}"}}'.format(
                 c=component).replace('\n', '')
             headers = {'content-type': 'application/json'}
-
-            print()
-            print()
-            print()
-            print(string_json)
-            print()
-            print()
-            print()
-
             react_build = requests.post(url, data=string_json, headers=headers)
 
             f = open("react_build.html", "w")

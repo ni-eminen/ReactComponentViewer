@@ -1,4 +1,5 @@
 # Import the required libraries
+from textwrap import fill
 import tkinter as tk
 from tkinter import Frame, font as tkfont, Button
 from turtle import width  # python 3
@@ -38,14 +39,17 @@ class ReactComponentViewer(tk.Tk):
         # the container is where we'll stack a bunch of frames
         # on top of each other, then the one we want visible
         # will be raised above the others
-        container = Frame(self, width=100)
+        container = Frame(self)
         container.grid(row=0, column=0, sticky='nsew')
         container.grid_rowconfigure(0, weight=1)
-        container.grid_columnconfigure(0, weight=2)
-        container.grid_columnconfigure(1, weight=10)
 
-        sidebar = Frame(container, bg='#89CFF0')
-        sidebar.grid(row=0, column=0, sticky='nsew')
+        # sidebar = Frame(container, bg='#89CFF0', width=100)
+        # sidebar.grid(row=0, column=0, sticky='nsew')
+
+        # sidebar
+        sidebar = tk.Frame(container, width=200, bg='white', height=500,
+                           relief='sunken', borderwidth=2)
+        sidebar.pack(expand=False, fill='both', side='left', anchor='nw')
 
         # Make the buttons with the icons to be shown
         home_b = Button(sidebar, command=lambda: self.show_frame(
@@ -57,7 +61,7 @@ class ReactComponentViewer(tk.Tk):
         set_b.pack(pady=10)
 
         content_frame = tk.Frame(container)
-        content_frame.grid(row=0, column=1, sticky='nsew')
+        content_frame.pack(fill='both', side='right', expand=True)
         content_frame.grid_rowconfigure(0, weight=1)
         content_frame.grid_columnconfigure(0, weight=1)
 
