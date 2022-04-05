@@ -7,7 +7,11 @@ authors = ["ni-eminen <matiasnie2@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 bcrypt = "^3.2.0"
-pywebview = "^3.6.2"
+SQLAlchemy = "^1.4.34"
+invoke = "^1.7.0"
+pytest = "^7.1.1"
+requests = "^2.27.1"
+pywebview = {extras = ["qt"], version = "^3.6.2"}
 
 [tool.poetry.dev-dependencies]
 
