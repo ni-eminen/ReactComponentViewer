@@ -5,6 +5,7 @@ import requests
 # import idlelib.colorizer as ic
 # import idlelib.percolator as ip
 import re
+import webbrowser
 
 
 class AddComponentScreen(tk.Frame):
@@ -66,7 +67,4 @@ class AddComponentScreen(tk.Frame):
             f = open("HTML/react_build.html", "w")
             f.write(react_build.text)
             f.close()
-
-            # Create a GUI window to view the HTML content
-            webview.create_window('build', "HTML/react_build.html")
-            webview.start()
+            webbrowser.open("HTML/react_build.html")
