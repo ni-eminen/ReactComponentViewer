@@ -53,8 +53,9 @@ class LoginScreen(tk.Frame):
     def validateLogin(self, username, password):
         print("username entered :", username.get())
         print("password entered :", password.get())
-        if True:
+        isAuth = db.verify_password(username.get(), password.get())
+        if isAuth:
             self.controller.show_frame("AddComponentScreen")
 
     def create_user(self, username, password):
-        db.add_user(username, password)
+        db.add_user(username.get(), password.get())

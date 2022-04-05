@@ -6,8 +6,6 @@ from turtle import width  # python 3
 from LoginScreen import LoginScreen
 from ComponentsScreen import ComponentsScreen
 from AddComponentScreen import AddComponentScreen
-import webview
-import requests
 
 # url = 'http://www.localhost:3000/api/component'
 # myobj = '{"component": "const [num, setNum] = useState(0); return ( <div> <p>{ num }</p> <button onClick={() => setNum(num + 50)}>click me</button> </div> );"}'
