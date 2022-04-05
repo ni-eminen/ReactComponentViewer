@@ -2,7 +2,7 @@ import tkinter as tk
 
 
 class ComponentsScreen(tk.Frame):
-    def __init__(self, parent, controller):
+    def __init__(self, parent, controller, db):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         label = tk.Label(self, text="Your Components Screen",

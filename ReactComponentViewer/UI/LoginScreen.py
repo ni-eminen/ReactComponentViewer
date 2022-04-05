@@ -1,13 +1,13 @@
 from lib2to3.pgen2.token import COLONEQUAL
 import tkinter as tk
 from functools import partial
-from database import Database as db
+from database import Database
 
 
 class LoginScreen(tk.Frame):
-
-    def __init__(self, parent, controller):
+    def __init__(self, parent, controller, db):
         tk.Frame.__init__(self, parent)
+        self.db = db
         self.controller = controller
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
@@ -53,9 +53,9 @@ class LoginScreen(tk.Frame):
     def validateLogin(self, username, password):
         print("username entered :", username.get())
         print("password entered :", password.get())
-        isAuth = db.verify_password(username.get(), password.get())
+        isAuth = self.db.verify_password(username.get(), password.get())
         if isAuth:
             self.controller.show_frame("AddComponentScreen")
 
     def create_user(self, username, password):
-        db.add_user(username.get(), password.get())
+        self.db.add_user(username.get(), password.get())

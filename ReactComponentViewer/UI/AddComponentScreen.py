@@ -2,13 +2,13 @@ import tkinter as tk
 from tkinter import END, Button, Frame, Canvas, Widget, Text
 import webview
 import requests
-import idlelib.colorizer as ic
-import idlelib.percolator as ip
+# import idlelib.colorizer as ic
+# import idlelib.percolator as ip
 import re
 
 
 class AddComponentScreen(tk.Frame):
-    def __init__(self, parent, controller):
+    def __init__(self, parent, controller, db):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
@@ -27,26 +27,26 @@ class AddComponentScreen(tk.Frame):
         text_editor = Text(text_frame)
         text_editor.pack(side='top', fill='both', expand=True)
 
-        cdg = ic.ColorDelegator()
-        cdg.prog = re.compile(
-            r'\b(?P<MYGROUP>tkinter)\b|' + ic.make_pat(), re.S)
-        cdg.idprog = re.compile(r'\s+(\w+)', re.S)
+        # cdg = ic.ColorDelegator()
+        # cdg.prog = re.compile(
+        #     r'\b(?P<MYGROUP>tkinter)\b|' + ic.make_pat(), re.S)
+        # cdg.idprog = re.compile(r'\s+(\w+)', re.S)
 
-        cdg.tagdefs['MYGROUP'] = {
-            'foreground': '#7F7F7F', 'background': '#FFFFFF'}
+        # cdg.tagdefs['MYGROUP'] = {
+        #     'foreground': '#7F7F7F', 'background': '#FFFFFF'}
 
-        # These five lines are optional. If omitted, default colours are used.
-        cdg.tagdefs['COMMENT'] = {
-            'foreground': '#FF0000', 'background': '#FFFFFF'}
-        cdg.tagdefs['KEYWORD'] = {
-            'foreground': '#007F00', 'background': '#FFFFFF'}
-        cdg.tagdefs['BUILTIN'] = {
-            'foreground': '#7F7F00', 'background': '#FFFFFF'}
-        cdg.tagdefs['STRING'] = {
-            'foreground': '#7F3F00', 'background': '#FFFFFF'}
-        cdg.tagdefs['DEFINITION'] = {
-            'foreground': '#007F7F', 'background': '#FFFFFF'}
-        ip.Percolator(text_editor).insertfilter(cdg)
+        # # These five lines are optional. If omitted, default colours are used.
+        # cdg.tagdefs['COMMENT'] = {
+        #     'foreground': '#FF0000', 'background': '#FFFFFF'}
+        # cdg.tagdefs['KEYWORD'] = {
+        #     'foreground': '#007F00', 'background': '#FFFFFF'}
+        # cdg.tagdefs['BUILTIN'] = {
+        #     'foreground': '#7F7F00', 'background': '#FFFFFF'}
+        # cdg.tagdefs['STRING'] = {
+        #     'foreground': '#7F3F00', 'background': '#FFFFFF'}
+        # cdg.tagdefs['DEFINITION'] = {
+        #     'foreground': '#007F7F', 'background': '#FFFFFF'}
+        # ip.Percolator(text_editor).insertfilter(cdg)
 
         button_frame = Frame(mainframe, bg='red')
         button_frame.grid(column=0, row=1, sticky='nswe')
@@ -63,10 +63,10 @@ class AddComponentScreen(tk.Frame):
             headers = {'content-type': 'application/json'}
             react_build = requests.post(url, data=string_json, headers=headers)
 
-            f = open("react_build.html", "w")
+            f = open("HTML/react_build.html", "w")
             f.write(react_build.text)
             f.close()
 
             # Create a GUI window to view the HTML content
-            webview.create_window('build', "react_build.html")
+            webview.create_window('build', "HTML/react_build.html")
             webview.start()

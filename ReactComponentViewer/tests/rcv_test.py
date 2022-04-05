@@ -1,6 +1,7 @@
 import unittest
 from database import Database
 
+
 class TestMaksukortti(unittest.TestCase):
     def setUp(self):
         print("Set up goes here")

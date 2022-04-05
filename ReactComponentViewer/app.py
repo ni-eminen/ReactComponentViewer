@@ -3,16 +3,17 @@ from textwrap import fill
 import tkinter as tk
 from tkinter import Frame, font as tkfont, Button
 from turtle import width  # python 3
-from LoginScreen import LoginScreen
-from ComponentsScreen import ComponentsScreen
-from AddComponentScreen import AddComponentScreen
+from UI.LoginScreen import LoginScreen
+from UI.ComponentsScreen import ComponentsScreen
+from UI.AddComponentScreen import AddComponentScreen
+from database import Database
 
 # url = 'http://www.localhost:3000/api/component'
 # myobj = '{"component": "const [num, setNum] = useState(0); return ( <div> <p>{ num }</p> <button onClick={() => setNum(num + 50)}>click me</button> </div> );"}'
 # headers = {'content-type': 'application/json'}
 # react_build = requests.post(url, data = myobj, headers=headers)
 
-# f = open("react_build.html", "w")
+# f = open("HTML/react_build.html", "w")
 # f.write(react_build.text)
 # f.close()
 
@@ -40,6 +41,7 @@ class ReactComponentViewer(tk.Tk):
         container = Frame(self)
         container.grid(row=0, column=0, sticky='nsew')
         container.grid_rowconfigure(0, weight=1)
+        self.db = Database()
 
         # sidebar = Frame(container, bg='#89CFF0', width=100)
         # sidebar.grid(row=0, column=0, sticky='nsew')
@@ -66,7 +68,7 @@ class ReactComponentViewer(tk.Tk):
         self.frames = {}
         for F in (LoginScreen, AddComponentScreen, ComponentsScreen):
             page_name = F.__name__
-            frame = F(parent=content_frame, controller=self)
+            frame = F(parent=content_frame, controller=self, db=self.db)
             self.frames[page_name] = frame
 
             # put all of the pages in the same location;

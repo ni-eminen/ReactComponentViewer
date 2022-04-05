@@ -1,21 +1,14 @@
 [tool.poetry]
-name = "src"
+name = "front"
 version = "0.1.0"
 description = ""
 authors = ["ni-eminen <matiasnie2@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-SQLAlchemy = "^1.4.34"
 invoke = "^1.7.0"
-pytest = "^7.1.1"
-requests = "^2.27.1"
-pywebview = {extras = ["qt"], version = "^3.6.2"}
-bcrypt = "^3.2.0"
-QtPy = "^2.0.1"
 
 [tool.poetry.dev-dependencies]
-pytest = "^7.1.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

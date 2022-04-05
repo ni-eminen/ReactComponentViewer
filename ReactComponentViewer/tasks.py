@@ -10,6 +10,7 @@ def foo(ctx):
 def start(ctx):
     ctx.run("python ./app.py", pty=True)
 
+
 @task
 def coverage(ctx):
     ctx.run("coverage run --branch -m pytest", pty=True)
