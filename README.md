@@ -26,6 +26,8 @@ poetry run invoke start
 
 	
 ### Running the program
+In order for the program to work appropriately (for the time being), the user has to set up the backend server locally and have npm installed on their machine. A properly hosted backend will be introduced in the coming week.
+
 Simply run:
 ```bash
 poetry run invoke start
