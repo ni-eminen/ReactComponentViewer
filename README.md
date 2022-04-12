@@ -7,7 +7,7 @@ Be sure to checkout the backend code for this project at [RCV-backend](https://g
 
 ### Documentation</br>
 
-[gitlog](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/gitlog.txt)</br>
+[uml](https://github.com/ni-eminen/ReactComponentViewer/blob/main/laskarit/viikko4/uml.jpeg)</br>
 
 ## Installation
 
