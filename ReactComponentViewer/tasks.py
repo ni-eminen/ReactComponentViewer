@@ -15,6 +15,12 @@ def which(ctx):
 
 
 @task
+def test(ctx):
+    """Runs pytest on src"""
+    ctx.run("pytest src", pty=True)
+
+
+@task
 def coverage(ctx):
     """Runs coverage with pytest"""
     ctx.run("coverage run --branch -m pytest", pty=True)
