@@ -1,8 +1,10 @@
+"""Module for components window"""
 import tkinter as tk
 
 
 class ComponentsScreen(tk.Frame):
-    def __init__(self, parent, controller, db):
+    """Class for components window"""
+    def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.screen_size = '1000x700'
         self.controller = controller

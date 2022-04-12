@@ -1,34 +1,22 @@
+""""This is the """
 # Import the required libraries
-from textwrap import fill
 import tkinter as tk
 from tkinter import Frame, font as tkfont, Button
-from turtle import width  # python 3
-from UI.LoginScreen import LoginScreen
-from UI.ComponentsScreen import ComponentsScreen
-from UI.AddComponentScreen import AddComponentScreen
-from database import Database
+from .ui.login_screen import LoginScreen
+from .ui.components_screen import ComponentsScreen
+from .database import Database
+from .util.user import User
+from .ui.add_component_screen import AddComponentScreen
 
-# url = 'http://www.localhost:3000/api/component'
-# myobj = '{"component": "const [num, setNum] = useState(0); return ( <div> <p>{ num }</p> <button onClick={() => setNum(num + 50)}>click me</button> </div> );"}'
-# headers = {'content-type': 'application/json'}
-# react_build = requests.post(url, data = myobj, headers=headers)
-
-# f = open("HTML/react_build.html", "w")
-# f.write(react_build.text)
-# f.close()
-
-
-# # Create a GUI window to view the HTML content
-# webview.create_window('build', "react_build.html")
-# webview.start()
-
-# ----------------------------------------
-# sample app
 
 class ReactComponentViewer(tk.Tk):
+    """ This is the main class for ReactComponentViewer. It is responsible for
+        setting up the main window and the side bar."""
+
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
-
+        self.user = User()
+        self.database = Database()
         self.title_font = tkfont.Font(
             family='Helvetica', size=18, weight="bold", slant="italic")
         self.geometry('500x700')
@@ -41,7 +29,6 @@ class ReactComponentViewer(tk.Tk):
         container = Frame(self)
         container.grid(row=0, column=0, sticky='nsew')
         container.grid_rowconfigure(0, weight=1)
-        self.db = Database()
 
         # sidebar = Frame(container, bg='#89CFF0', width=100)
         # sidebar.grid(row=0, column=0, sticky='nsew')
@@ -68,7 +55,7 @@ class ReactComponentViewer(tk.Tk):
         self.frames = {}
         for F in (LoginScreen, AddComponentScreen, ComponentsScreen):
             page_name = F.__name__
-            frame = F(parent=content_frame, controller=self, db=self.db)
+            frame = F(parent=content_frame, controller=self)
             self.frames[page_name] = frame
 
             # put all of the pages in the same location;
@@ -76,16 +63,23 @@ class ReactComponentViewer(tk.Tk):
             # will be the one that is visible.
             frame.grid(row=0, column=0, sticky="nsew")
 
-        self.show_frame("LoginScreen")
+        self.show_login()
 
     def show_frame(self, page_name):
         '''Show a frame for the given page name'''
+        if self.user.logged_in is False:
+            return
+
         frame = self.frames[page_name]
         print(f'{frame.screen_size}+{self.winfo_x()}+{self.winfo_y()}')
         self.geometry(
             f'{frame.screen_size}+{self.winfo_x()}+{self.winfo_y()-24}')
 
         frame.tkraise()
+
+    def show_login(self):
+        """Raise the login screen"""
+        self.frames['LoginScreen'].tkraise()
 
 
 if __name__ == "__main__":

@@ -1,14 +1,16 @@
-from lib2to3.pgen2.token import COLONEQUAL
+"""Login screen module"""
 import tkinter as tk
 from functools import partial
-from database import Database
+
+from src.util.user import User
 
 
 class LoginScreen(tk.Frame):
-    def __init__(self, parent, controller, db):
+    """Login screen"""
+
+    def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.screen_size = '500x700'
-        self.db = db
         self.controller = controller
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
@@ -23,39 +25,44 @@ class LoginScreen(tk.Frame):
         login_div = tk.Frame(mainframe, bg='white')
         login_div.grid(row=0, column=0)
 
-        usernameLabel = tk.Label(
+        tk.Label(
             login_div, text="Username", bg='white').grid(row=0, column=0)
 
         username = tk.StringVar()
-        usernameEntry = tk.Entry(
+        tk.Entry(
             login_div, textvariable=username, bg='white').grid(row=0, column=1, padx=10, pady=10)
 
-        passwordLabel = tk.Label(
+        tk.Label(
             login_div, text="Password", bg='white').grid(row=1, column=0)
 
         password = tk.StringVar()
-        passwordEntry = tk.Entry(
-            login_div, textvariable=password, bg='white').grid(row=1, column=1, padx=10, pady=10)
+        tk.Entry(
+            login_div, textvariable=password, show="*",
+            bg='white').grid(row=1, column=1, padx=10, pady=10)
 
         # username label and text entry box
 
-        valLogin = partial(self.validateLogin, username, password)
+        val_login = partial(self.validate_login, username, password)
         create_user_ = partial(self.create_user, username, password)
 
         # login button
-        login_b = tk.Button(login_div, text="Login", command=valLogin).grid(
+        tk.Button(login_div, text="Login", command=val_login).grid(
             row=2, column=1, sticky='e', padx=10)
 
         # login button
-        create_account_b = tk.Button(login_div, text="Create account", command=create_user_).grid(
+        tk.Button(login_div, text="Create account", command=create_user_).grid(
             row=3, column=1, sticky='e', padx=10, pady=5)
 
-    def validateLogin(self, username, password):
-        print("username entered :", username.get())
-        print("password entered :", password.get())
-        isAuth = self.db.verify_password(username.get(), password.get())
-        if isAuth:
+    def validate_login(self, username, password):
+        """Validates the username and password"""
+        is_auth = self.controller.db.verify_password(
+            username.get(), password.get())
+        if is_auth:
+            user = User(username.get())
+            user.logged_in = True
+            self.controller.user = user
             self.controller.show_frame("AddComponentScreen")
 
     def create_user(self, username, password):
-        self.db.add_user(username.get(), password.get())
+        """Adds user to the database"""
+        self.controller.db.add_user(username.get(), password.get())
