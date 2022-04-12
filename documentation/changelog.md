@@ -7,3 +7,10 @@
 - Created a database class that manages the connection via SQLAlchemy. Presently it is extremely slow due to SQLAlchemy's insert() function
 - Created a UI for the component editor
 - Created a test for the tests folder
+
+## Week 4
+
+- Login implemented
+- Refactoring
+- User class
+- database class implemented

@@ -1,5 +1,6 @@
 # ReactComponentViewer
 
+ReactComponentViewer's aim is to offer a quick and easy way to inspect React components without having to configure a React app.
 ## Contents
 
 Be sure to checkout the backend code for this project at [RCV-backend](https://github.com/ni-eminen/RCV-backend)
@@ -7,10 +8,6 @@ Be sure to checkout the backend code for this project at [RCV-backend](https://g
 ### Documentation</br>
 
 [gitlog](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/gitlog.txt)</br>
-[command line](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/komentorivi.txt)</br>
-[requirement spec](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/vaatimusmaarittely.md)</br>
-[timetable](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/timetable.md)</br>
-[changelog](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/changelog.md)</br>
 
 ## Installation
 
