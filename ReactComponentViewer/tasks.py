@@ -5,7 +5,7 @@ from invoke import task
 @task
 def start(ctx):
     """Runs the application"""
-    ctx.run("python ./app.py", pty=True)
+    ctx.run("python ./index.py", pty=True)
 
 
 @task
