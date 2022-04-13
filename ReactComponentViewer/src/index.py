@@ -2,11 +2,11 @@
 # Import the required libraries
 import tkinter as tk
 from tkinter import Frame, font as tkfont, Button
-from .ui.login_screen import LoginScreen
-from .ui.components_screen import ComponentsScreen
-from .database import Database
-from .util.user import User
-from .ui.add_component_screen import AddComponentScreen
+from src.ui.login_screen import LoginScreen
+from src.ui.components_screen import ComponentsScreen
+from src.database import Database
+from src.util.user import User
+from src.ui.add_component_screen import AddComponentScreen
 
 
 class ReactComponentViewer(tk.Tk):
