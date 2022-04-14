@@ -73,22 +73,21 @@ class Database:
     #     """Removes a component from database"""
     #     pass
 
+    def get_components_for_user(self, username):
+        """Gets a users components"""
+        user_id = self.get_user_id(
+            username)  # pylint: disable=no-value-for-parameter
+        components_table = self.components_table
+        query = select(components_table.c.component).where(
+            components_table.c.owner_id == user_id)
+        components = self.conn.execute(query).fetchall()
+        return components
 
-def get_components_for_user(self, username):
-    """Gets a users components"""
-    user_id = get_user_id(username)  # pylint: disable=no-value-for-parameter
-    components_table = self.components_table
-    query = select(components_table.c.component).where(
-        components_table.c.owner_id == user_id)
-    components = self.conn.execute(query).fetchall()
-    return components
-
-
-def get_user_id(self, username):
-    """Gets a users id by their username"""
-    query = select(self.users_table.c.id).where(
-        self.users_table.c.username == username)
-    result = self.conn.execute(query).fetchone()
-    if len(result) > 0:
-        return result[0]
-    return 0
+    def get_user_id(self, username):
+        """Gets a users id by their username"""
+        query = select(self.users_table.c.id).where(
+            self.users_table.c.username == username)
+        result = self.conn.execute(query).fetchone()
+        if len(result) > 0:
+            return result[0]
+        return 0

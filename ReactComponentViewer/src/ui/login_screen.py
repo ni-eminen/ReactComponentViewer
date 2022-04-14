@@ -59,6 +59,8 @@ class LoginScreen(tk.Frame):
             username.get(), password.get())
         if is_auth:
             user = User(username.get())
+            user.user_id = self.controller.database.get_user_id(
+                user.username)
             user.logged_in = True
             self.controller.user = user
             self.controller.show_frame("AddComponentScreen")
