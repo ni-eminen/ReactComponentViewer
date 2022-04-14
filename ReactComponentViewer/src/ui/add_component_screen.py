@@ -9,6 +9,15 @@ class AddComponentScreen(tk.Frame):
     """Class for add component screen"""
 
     def __init__(self, parent, controller):
+        placeholder = """const [counter, setCounter] = useState(0);
+
+return (
+<div>
+    <h1>{counter}</h1>
+    <button onClick={() => setCounter(counter + 1)}>click me</button>
+</div>
+);"""
+
         tk.Frame.__init__(self, parent)
         self.screen_size = '1000x700'
         self.controller = controller
@@ -26,7 +35,7 @@ class AddComponentScreen(tk.Frame):
         text_frame.grid(column=0, row=0, sticky='news')
 
         text_editor = Text(text_frame)
-        text_editor.insert('1.0', """asdf""")
+        text_editor.insert('1.0', placeholder)
         text_editor.pack(side='top', fill='both', expand=True)
 
         button_frame = Frame(mainframe, bg='red')
@@ -36,15 +45,20 @@ class AddComponentScreen(tk.Frame):
             text_editor.get('1.0', END)), text='Render component')
         render_button.grid(column=0, row=0, sticky='e')
 
+        save_button = Button(button_frame, command=lambda: controller.database.save_component(
+            text_editor.get('1.0', END)), text="Save component")
+        save_button.grid(column=1, row=0, sticky="e")
+
         def render_component(component):
             print(component)
             url = 'http://157.230.120.211:49160/api/component'
             string_json = '{{"component": "{c}"}}'.format(  # pylint: disable=consider-using-f-string
-                c=component).replace('\n', '')
+                c=component).replace('\n', '').replace('\"', "\'")
             headers = {'content-type': 'application/json'}
-            react_build = requests.post(url, data=string_json, headers=headers)
+            react_build = requests.post(
+                url, data=string_json, headers=headers)
 
             with open("react_build.html", "w", encoding='utf8') as file:
                 file.write(react_build.text)
                 file.close()
-                webbrowser.open_new_tab("react_build.html")
+                webbrowser.open_new("react_build.html")
