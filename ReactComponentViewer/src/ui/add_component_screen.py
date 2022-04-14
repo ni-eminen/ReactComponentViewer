@@ -25,6 +25,7 @@ class AddComponentScreen(tk.Frame):
         text_frame.grid(column=0, row=0, sticky='news')
 
         text_editor = Text(text_frame)
+        text_editor.insert('1.0', """asdf""")
         text_editor.pack(side='top', fill='both', expand=True)
 
         button_frame = Frame(mainframe, bg='red')
@@ -45,4 +46,4 @@ class AddComponentScreen(tk.Frame):
             with open("react_build.html", "w", encoding='utf8') as file:
                 file.write(react_build.text)
                 file.close()
-                webbrowser.open("react_build.html")
+                webbrowser.open_new_tab("react_build.html")
