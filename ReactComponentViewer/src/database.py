@@ -58,6 +58,12 @@ class Database:
             return is_auth
         return False
 
+    def save_component(self, component):
+        """Saves a component to the database"""
+        ins = insert(self.components_table).values(
+            component=component)
+        self.engine.execute(ins)
+
     # def remove_user(self, user_id):
     #     """Removes user from database"""
     #     pass
