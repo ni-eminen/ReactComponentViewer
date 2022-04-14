@@ -42,7 +42,7 @@ class LoginScreen(tk.Frame):
 
         # username label and text entry box
 
-        val_login = partial(self.validate_login, username, password)
+        val_login = partial(self.log_in_init, username, password)
         create_user_ = partial(self.create_user, username, password)
 
         # login button
@@ -52,6 +52,14 @@ class LoginScreen(tk.Frame):
         # login button
         tk.Button(login_div, text="Create account", command=create_user_).grid(
             row=3, column=1, sticky='e', padx=10, pady=5)
+
+    def log_in_init(self, username, password):
+        """Perform necessary actions to log the user in and initialize the application"""
+        self.validate_login(username, password)
+        self.controller.show_frame("AddComponentScreen")
+        self.controller.user.components = self.controller.database.get_user_components(
+            self.controller.user.user_id)
+        print('fasfda', self.controller.user.components)
 
     def validate_login(self, username, password):
         """Validates the username and password"""
@@ -63,7 +71,6 @@ class LoginScreen(tk.Frame):
                 user.username)
             user.logged_in = True
             self.controller.user = user
-            self.controller.show_frame("AddComponentScreen")
 
     def create_user(self, username, password):
         """Adds user to the database"""

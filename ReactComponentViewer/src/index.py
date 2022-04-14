@@ -39,8 +39,8 @@ class ReactComponentViewer(tk.Tk):
         sidebar.pack(expand=False, fill='both', side='left', anchor='nw')
 
         # Make the buttons with the icons to be shown
-        home_b = Button(sidebar, command=lambda: self.show_frame(
-            'ComponentsScreen'), bg='orange', relief='flat', text='Components')
+        home_b = Button(sidebar, command=lambda: self.show_components(  # pylint: disable=unnecessary-lambda
+        ), bg='orange', relief='flat', text='Components')
         set_b = Button(sidebar, command=lambda: self.show_frame(
             'AddComponentScreen'), bg='orange', relief='flat', text='Add component')
 
@@ -80,6 +80,13 @@ class ReactComponentViewer(tk.Tk):
     def show_login(self):
         """Raise the login screen"""
         self.frames['LoginScreen'].tkraise()
+
+    def show_components(self):
+        """Shows the components screen and loads up the components for it"""
+        self.frames['ComponentsScreen'].load_components(
+            self.database.get_user_components(self.user.user_id))
+        self.show_frame('ComponentsScreen')
+        print('shwoing componnste')
 
 
 if __name__ == "__main__":

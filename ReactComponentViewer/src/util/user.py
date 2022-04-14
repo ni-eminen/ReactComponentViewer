@@ -1,11 +1,14 @@
 """User class module"""
 
+
 class User:
     """User class"""
+
     def __init__(self, username=''):
         self.username = username
         self.user_id = 0
         self.logged_in = False
+        self.components = []
 
     def stringify(self):
         """Stringify user"""

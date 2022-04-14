@@ -91,3 +91,11 @@ class Database:
         if len(result) > 0:
             return result[0]
         return 0
+
+    def get_user_components(self, user_id):
+        """Gets a users components"""
+        query = select(self.components_table.c.name, self.components_table.c.component).where(
+            self.components_table.c.owner_id == user_id)
+        result = self.conn.execute(query).fetchall()
+        print(result)
+        return result
