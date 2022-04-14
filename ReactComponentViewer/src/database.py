@@ -28,7 +28,8 @@ class Database:
                 'components', meta,
                 Column('id', Integer, primary_key=True),
                 Column('owner_id', Integer),
-                Column('component', String)
+                Column('component', String),
+                Column('name', String)
             )
 
         meta.reflect()
@@ -58,18 +59,14 @@ class Database:
             return is_auth
         return False
 
-    def save_component(self, component):
+    def save_component(self, name, owner_id, component):
         """Saves a component to the database"""
         ins = insert(self.components_table).values(
-            component=component)
+            component=component, name=name, owner_id=owner_id)
         self.engine.execute(ins)
 
     # def remove_user(self, user_id):
     #     """Removes user from database"""
-    #     pass
-
-    # def add_component(self, component, user_id):
-    #     """Adds a component to database"""
     #     pass
 
     # def remove_component(self, component_id):
