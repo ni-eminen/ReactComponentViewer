@@ -7,6 +7,7 @@ import requests
 
 class AddComponentScreen(tk.Frame):
     """Class for add component screen"""
+
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.screen_size = '1000x700'
@@ -38,7 +39,7 @@ class AddComponentScreen(tk.Frame):
         def render_component(component):
             print(component)
             url = 'http://157.230.120.211:49160/api/component'
-            string_json = '{{"component": "{c}"}}'.format( # pylint: disable=consider-using-f-string
+            string_json = '{{"component": "{c}"}}'.format(  # pylint: disable=consider-using-f-string
                 c=component).replace('\n', '')
             headers = {'content-type': 'application/json'}
             react_build = requests.post(url, data=string_json, headers=headers)
