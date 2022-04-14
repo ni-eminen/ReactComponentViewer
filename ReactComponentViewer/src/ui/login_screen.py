@@ -55,7 +55,7 @@ class LoginScreen(tk.Frame):
 
     def validate_login(self, username, password):
         """Validates the username and password"""
-        is_auth = self.controller.db.verify_password(
+        is_auth = self.controller.database.verify_password(
             username.get(), password.get())
         if is_auth:
             user = User(username.get())
@@ -65,4 +65,4 @@ class LoginScreen(tk.Frame):
 
     def create_user(self, username, password):
         """Adds user to the database"""
-        self.controller.db.add_user(username.get(), password.get())
+        self.controller.database.add_user(username.get(), password.get())

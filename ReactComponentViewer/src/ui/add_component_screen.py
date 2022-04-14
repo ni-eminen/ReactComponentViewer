@@ -36,13 +36,13 @@ class AddComponentScreen(tk.Frame):
 
         def render_component(component):
             print(component)
-            url = 'http://www.localhost:3000/api/component'
+            url = 'http://157.230.120.211:49160/api/component'
             string_json = '{{"component": "{c}"}}'.format( # pylint: disable=consider-using-f-string
                 c=component).replace('\n', '')
             headers = {'content-type': 'application/json'}
             react_build = requests.post(url, data=string_json, headers=headers)
 
-            with open("HTML/react_build.html", "w", encoding='utf8') as file:
+            with open("react_build.html", "w", encoding='utf8') as file:
                 file.write(react_build.text)
                 file.close()
-                webbrowser.open("HTML/react_build.html")
+                webbrowser.open("react_build.html")
