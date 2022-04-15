@@ -1,8 +1,7 @@
 """Module for add component screen"""
-import webbrowser
 import tkinter as tk
 from tkinter import END, Button, Frame, Text, Toplevel
-import requests
+from src.util.utilities import render_component
 
 POP = None
 
@@ -85,17 +84,3 @@ return (
         save_button = Button(button_frame, command=lambda: self.save_component_dialog(
             text_editor.get('1.0', END)), text="Save component")
         save_button.grid(column=1, row=0, sticky="e")
-
-        def render_component(component):
-            print(component)
-            url = 'http://157.230.120.211:49160/api/component'
-            string_json = '{{"component": "{c}"}}'.format(  # pylint: disable=consider-using-f-string
-                c=component).replace('\n', '')
-            headers = {'content-type': 'application/json'}
-            react_build = requests.post(
-                url, data=string_json, headers=headers)
-
-            with open("react_build.html", "w", encoding='utf8') as file:
-                file.write(react_build.text)
-                file.close()
-                webbrowser.open_new("react_build.html")

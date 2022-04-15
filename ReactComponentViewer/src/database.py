@@ -1,7 +1,8 @@
 """Module for database actions"""
+import numpy as np
 import bcrypt
 from sqlalchemy import (Column, Table, Integer, String,
-                        MetaData, inspect, create_engine, select, insert)
+                        MetaData, inspect, create_engine, select, insert, update)
 
 SALTROUNDS = 10
 
@@ -94,8 +95,21 @@ class Database:
 
     def get_user_components(self, user_id):
         """Gets a users components"""
-        query = select(self.components_table.c.name, self.components_table.c.component).where(
+        query = select(self.components_table.c.name, self.components_table.c.component,
+                       self.components_table.c.id).where(
             self.components_table.c.owner_id == user_id)
         result = self.conn.execute(query).fetchall()
-        print(result)
+        as_array = []
+        for component in result:
+            as_array.append(np.asarray(component))
+
         return result
+
+    def patch_component(self, component_id, new_component):
+        """Updates a component"""
+        query = (
+            update(self.components_table).
+            where(self.components_table.c.id == component_id).
+            values(component=new_component)
+        )
+        self.conn.execute(query)

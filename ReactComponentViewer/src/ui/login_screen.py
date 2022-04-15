@@ -59,7 +59,6 @@ class LoginScreen(tk.Frame):
         self.controller.show_frame("AddComponentScreen")
         self.controller.user.components = self.controller.database.get_user_components(
             self.controller.user.user_id)
-        print('fasfda', self.controller.user.components)
 
     def validate_login(self, username, password):
         """Validates the username and password"""

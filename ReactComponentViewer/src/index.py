@@ -10,8 +10,8 @@ from src.ui.add_component_screen import AddComponentScreen
 
 
 class ReactComponentViewer(tk.Tk):
-    """ This is the main class for ReactComponentViewer. It is responsible for
-        setting up the main window and the side bar."""
+    """This is the main class for ReactComponentViewer. It is responsible for
+        setting up the main window and the side bar as well as changing frames."""
 
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
@@ -71,7 +71,6 @@ class ReactComponentViewer(tk.Tk):
             return
 
         frame = self.frames[page_name]
-        print(f'{frame.screen_size}+{self.winfo_x()}+{self.winfo_y()}')
         self.geometry(
             f'{frame.screen_size}+{self.winfo_x()}+{self.winfo_y()-24}')
 
@@ -86,7 +85,6 @@ class ReactComponentViewer(tk.Tk):
         self.frames['ComponentsScreen'].load_components(
             self.database.get_user_components(self.user.user_id))
         self.show_frame('ComponentsScreen')
-        print('shwoing componnste')
 
 
 if __name__ == "__main__":
