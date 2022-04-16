@@ -63,7 +63,7 @@ class Database:
         print(hashed)
         if len(hashed) > 0:
             is_auth = bcrypt.checkpw(password.encode(
-                'utf8'), hashed[0].encode('utf8'))
+                'utf8'), hashed[0])
             return is_auth
         return False
 
