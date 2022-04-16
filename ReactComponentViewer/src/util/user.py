@@ -21,6 +21,7 @@ class User:
 
     def patch_component(self, component_id, component_string):
         """Patches a component in users components"""
+        print(component_string)
         for component in self.components:
             if component[2] == component_id:
                 i = self.components.index(component)

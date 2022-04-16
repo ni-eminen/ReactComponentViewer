@@ -8,6 +8,7 @@ class ComponentsScreen(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
+        self.collection = 'user_components'
         self.components = []
         self.screen_size = '1000x700'
         self.controller = controller
@@ -48,6 +49,7 @@ class ComponentsScreen(tk.Frame):
 
     def save_changes(self):
         """Saves changes to current component"""
+        new_text = self.component_text.get('1.0', tk.END)
         selected_name = self.components_list.get(tk.ANCHOR)
         selected = None
         for component in self.components:
@@ -59,14 +61,14 @@ class ComponentsScreen(tk.Frame):
             return None
 
         component_id = selected[2]
-        component_string = selected[1]
         self.controller.database.patch_component(
-            component_id, component_string)
+            component_id, new_text)
 
-        self.controller.user.patch_component(
-            component_id, component_string)
+        if self.collection == 'user_components':
+            self.components = self.controller.database.get_user_components(
+                self.controller.user.user_id)
 
-        return component_string
+        return new_text
 
     def load_components(self, components):
         """Loads the component listbox with the components given"""

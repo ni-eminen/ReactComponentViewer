@@ -82,7 +82,7 @@ class Database:
         query = select(components_table.c.component).where(
             components_table.c.owner_id == user_id)
         components = self.conn.execute(query).fetchall()
-        return components
+        return self.row_as_array(components)
 
     def get_user_id(self, username):
         """Gets a users id by their username"""
@@ -99,11 +99,8 @@ class Database:
                        self.components_table.c.id).where(
             self.components_table.c.owner_id == user_id)
         result = self.conn.execute(query).fetchall()
-        as_array = []
-        for component in result:
-            as_array.append(np.asarray(component))
 
-        return result
+        return self.row_as_array(result)
 
     def patch_component(self, component_id, new_component):
         """Updates a component"""
@@ -112,4 +109,13 @@ class Database:
             where(self.components_table.c.id == component_id).
             values(component=new_component)
         )
+        print(query)
         self.conn.execute(query)
+        print('updated in database')
+
+    def row_as_array(self, rows):
+        """LegacyRow as an array. This gives the row mutability."""
+        new_arr = []
+        for row in rows:
+            new_arr.append(np.asarray(row).tolist())
+        return new_arr
