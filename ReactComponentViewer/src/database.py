@@ -89,7 +89,7 @@ class Database:
         query = select(components_table.c.component).where(
             components_table.c.owner_id == user_id)
         components = self.conn.execute(query).fetchall()
-        return self.row_as_array(components)
+        return row_as_array(components)
 
     def get_user_id(self, username):
         """Gets a users id by their username"""
