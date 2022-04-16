@@ -13,7 +13,8 @@ class Database:
 
     def __init__(self):
         print('creating connnection')
-        self.engine = create_engine('sqlite:///database.db', echo=False)
+        self.engine = create_engine(
+            'sqlite:///database.db', echo=False)
         self.conn = self.engine.connect()
         meta = MetaData(bind=self.engine)
 
@@ -43,9 +44,10 @@ class Database:
         """Adds auser to database"""
         salt = bcrypt.gensalt(rounds=SALTROUNDS)
         hashed = bcrypt.hashpw(password.encode('utf8'), salt)
+        pw_hash = hashed.decode('utf8')
 
         ins = insert(self.users_table).values(
-            username=username, password=hashed)
+            username=username, password=pw_hash)
         self.engine.execute(ins)
 
     def verify_password(self, username, password):
@@ -55,8 +57,13 @@ class Database:
         query = select(users_table.c.password).where(
             users_table.c.username == username)
         hashed = self.conn.execute(query).fetchone()
+        print()
+        print()
+        print()
+        print(hashed)
         if len(hashed) > 0:
-            is_auth = bcrypt.checkpw(password.encode('utf8'), hashed[0])
+            is_auth = bcrypt.checkpw(password.encode(
+                'utf8'), hashed[0].encode('utf8'))
             return is_auth
         return False
 
@@ -100,7 +107,7 @@ class Database:
             self.components_table.c.owner_id == user_id)
         result = self.conn.execute(query).fetchall()
 
-        return self.row_as_array(result)
+        return row_as_array(result)
 
     def patch_component(self, component_id, new_component):
         """Updates a component"""
@@ -113,17 +120,17 @@ class Database:
         self.conn.execute(query)
         print('updated in database')
 
-    def row_as_array(self, rows):
-        """LegacyRow as an array. This gives the row mutability."""
-        new_arr = []
-        for row in rows:
-            new_arr.append(np.asarray(row).tolist())
-        return new_arr
-
     def get_community_components(self):
         """Loads the community components"""
         query = select(self.components_table.c.name, self.components_table.c.component,
                        self.components_table.c.id)
         result = self.conn.execute(query).fetchall()
-        print(result)
-        return self.row_as_array(result)
+        return row_as_array(result)
+
+
+def row_as_array(rows):
+    """LegacyRow as an array. This gives the row mutability."""
+    new_arr = []
+    for row in rows:
+        new_arr.append(np.asarray(row).tolist())
+    return new_arr
