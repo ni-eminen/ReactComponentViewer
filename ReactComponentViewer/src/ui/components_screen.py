@@ -8,7 +8,7 @@ class ComponentsScreen(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        self.collection = 'user_components'
+        self.collection = 'user'
         self.components = []
         self.screen_size = '1000x700'
         self.controller = controller
@@ -16,14 +16,24 @@ class ComponentsScreen(tk.Frame):
         self.grid_columnconfigure(1, weight=1)
         self.grid_rowconfigure(0, weight=1)
 
-        components_frame = tk.Frame(self, background='black')
+        components_frame = tk.Frame(self, background='white')
         components_frame.grid_columnconfigure(0, weight=1)
-        components_frame.grid_rowconfigure(0, weight=1)
+        components_frame.grid_columnconfigure(1, weight=1)
+        components_frame.grid_rowconfigure(1, weight=1)
         components_frame.grid(column=0, row=0, sticky='nsew', rowspan=2)
         self.components_list = tk.Listbox(components_frame)
 
         self.components_list.bind("<<ListboxSelect>>", self.listbox_onselect)
-        self.components_list.grid(row=0, column=0, sticky='nsew')
+        self.components_list.grid(row=1, column=0, columnspan=2, sticky='nsew')
+
+        commmunity_button = tk.Button(
+            components_frame, text='community', command=lambda: self.load_community_components())
+        user_button = tk.Button(
+            components_frame, text='user', command=lambda: self.load_user_components())
+
+        commmunity_button.grid(
+            row=0, column=0, sticky='nsew')
+        user_button.grid(row=0, column=1, sticky='nsew')
 
         component_frame = tk.Frame(self, background='white')
         component_frame.grid(column=1, row=0, sticky='nsew')
@@ -43,7 +53,7 @@ class ComponentsScreen(tk.Frame):
         render_button.grid(column=1, row=1, sticky='e')
 
         save_changes_button = tk.Button(
-            buttons_frame, text='Save changes', command=lambda: self.save_changes())  # pylint: disable=unnecessary-lambda
+            buttons_frame, text='Save changes', command=lambda: self.save_changes())
 
         save_changes_button.grid(column=0, row=1, sticky='e')
 
@@ -64,7 +74,7 @@ class ComponentsScreen(tk.Frame):
         self.controller.database.patch_component(
             component_id, new_text)
 
-        if self.collection == 'user_components':
+        if self.collection == 'user':
             self.components = self.controller.database.get_user_components(
                 self.controller.user.user_id)
 
@@ -76,6 +86,19 @@ class ComponentsScreen(tk.Frame):
         self.components_list.delete(0, tk.END)
         for component in components:
             self.components_list.insert(tk.END, component[0])
+
+    def load_community_components(self):
+        """Loads the community components"""
+        self.collection = 'community'
+        components = self.controller.database.get_community_components()
+        self.load_components(components)
+
+    def load_user_components(self):
+        """Loads the user's components on to the components listbox"""
+        self.collection = 'user'
+        components = self.controller.database.get_user_components(
+            self.controller.user.user_id)
+        self.load_components(components)
 
     def listbox_onselect(self, _select):
         """Sets the component text on display"""

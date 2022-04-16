@@ -8,7 +8,7 @@ def render_component(component):
     Displays it in a webbrowser."""
     url = 'http://157.230.120.211:49160/api/component'
     string_json = '{{"component": "{c}"}}'.format(  # pylint: disable=consider-using-f-string
-        c=component).replace('\n', '')
+        c=component.replace('\n', '').replace('"', "'"))
     headers = {'content-type': 'application/json'}
     react_build = requests.post(
         url, data=string_json, headers=headers)

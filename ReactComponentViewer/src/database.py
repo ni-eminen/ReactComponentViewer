@@ -119,3 +119,11 @@ class Database:
         for row in rows:
             new_arr.append(np.asarray(row).tolist())
         return new_arr
+
+    def get_community_components(self):
+        """Loads the community components"""
+        query = select(self.components_table.c.name, self.components_table.c.component,
+                       self.components_table.c.id)
+        result = self.conn.execute(query).fetchall()
+        print(result)
+        return self.row_as_array(result)
