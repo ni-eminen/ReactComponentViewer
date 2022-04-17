@@ -4,14 +4,14 @@ import os
 from ..database import Database
 
 
-class TestRCV(unittest.TestCase):
+class TestDatabase(unittest.TestCase):
     """Set up"""
 
     def setUp(self):
         print("Set up goes here")
-        if os.path.exists("../../test.db"):
+        if os.path.exists("test.db"):
             print(True)
-            os.remove("../../test.db")
+            os.remove("test.db")
         self.database = Database('test.db')
         self.database.add_user('root', 'root')
 

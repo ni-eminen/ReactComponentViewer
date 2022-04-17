@@ -3,7 +3,7 @@ import unittest
 from src.util.utilities import render_component
 
 
-class TestRCV(unittest.TestCase):
+class TestUtil(unittest.TestCase):
     """Set up"""
 
     def setUp(self):

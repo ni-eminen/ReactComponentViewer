@@ -120,4 +120,4 @@ class Database:
         query = select(self.users_table.c.username).where(
             self.users_table.c.username == username)
         result = self.conn.execute(query).fetchall()
-        return len(result) > 0
+        return len(result) == 1
