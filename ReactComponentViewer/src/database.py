@@ -1,8 +1,8 @@
 """Module for database actions"""
-import numpy as np
 import bcrypt
 from sqlalchemy import (Column, Table, Integer, String,
                         MetaData, inspect, create_engine, select, insert, update)
+from src.util.utilities import row_as_array
 
 SALTROUNDS = 10
 
@@ -11,10 +11,10 @@ class Database:
     """ Database is responsible for creating users and components to
         the database as well as removing them."""
 
-    def __init__(self):
+    def __init__(self, db_filename='database.db'):
         print('creating connnection')
         self.engine = create_engine(
-            'sqlite:///database.db', echo=False)
+            f'sqlite:///{db_filename}', echo=False)
         self.conn = self.engine.connect()
         meta = MetaData(bind=self.engine)
 
@@ -41,7 +41,7 @@ class Database:
         meta.create_all(self.engine)
 
     def add_user(self, username, password):
-        """Adds auser to database"""
+        """Adds a user to the database"""
         salt = bcrypt.gensalt(rounds=SALTROUNDS)
         hashed = bcrypt.hashpw(password.encode('utf8'), salt)
         pw_hash = hashed.decode('utf8')
@@ -57,13 +57,9 @@ class Database:
         query = select(users_table.c.password).where(
             users_table.c.username == username)
         hashed = self.conn.execute(query).fetchone()
-        print()
-        print()
-        print()
-        print(hashed)
-        if len(hashed) > 0:
+        if hashed is not None and len(hashed) > 0:
             is_auth = bcrypt.checkpw(password.encode(
-                'utf8'), hashed[0])
+                'utf8'), hashed[0].encode('utf8'))
             return is_auth
         return False
 
@@ -72,14 +68,6 @@ class Database:
         ins = insert(self.components_table).values(
             component=component, name=name, owner_id=owner_id)
         self.engine.execute(ins)
-
-    # def remove_user(self, user_id):
-    #     """Removes user from database"""
-    #     pass
-
-    # def remove_component(self, component_id):
-    #     """Removes a component from database"""
-    #     pass
 
     def get_components_for_user(self, username):
         """Gets a users components"""
@@ -127,10 +115,9 @@ class Database:
         result = self.conn.execute(query).fetchall()
         return row_as_array(result)
 
-
-def row_as_array(rows):
-    """LegacyRow as an array. This gives the row mutability."""
-    new_arr = []
-    for row in rows:
-        new_arr.append(np.asarray(row).tolist())
-    return new_arr
+    def user_exists(self, username):
+        """Checks if a user is in the database"""
+        query = select(self.users_table.c.username).where(
+            self.users_table.c.username == username)
+        result = self.conn.execute(query).fetchall()
+        return len(result) > 0
