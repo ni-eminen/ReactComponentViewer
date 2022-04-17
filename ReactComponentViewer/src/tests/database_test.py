@@ -42,6 +42,13 @@ class TestDatabase(unittest.TestCase):
         component = self.database.get_user_components(0)[0][0]
         self.assertEqual(component == 'test component', True)
 
+    def test_delete_component(self):
+        """Test deleting component"""
+        self.database.save_component('test component', 0, 'test component')
+        self.database.delete_component(0)
+        exists = self.database.component_exists('test component')
+        self.assertEqual(exists, False)
+
     def test_get_user_id(self):
         """Test for getting a user's id"""
         user_id = self.database.get_user_id('root')

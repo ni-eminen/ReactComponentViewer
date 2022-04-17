@@ -138,3 +138,10 @@ class Database:
             self.users_table.c.username == username)
         result = self.conn.execute(query).fetchall()
         return len(result) == 1
+
+    def component_exists(self, component):
+        """Checks if a user is in the database"""
+        query = select(self.components_table.c.component).where(
+            self.components_table.c.component == component)
+        result = self.conn.execute(query).fetchall()
+        return len(result) > 1
