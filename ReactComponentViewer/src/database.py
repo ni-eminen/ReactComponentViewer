@@ -1,7 +1,7 @@
 """Module for database actions"""
 import bcrypt
 from sqlalchemy import (Column, Table, Integer, String,
-                        MetaData, inspect, create_engine, select, insert, update)
+                        MetaData, delete, inspect, create_engine, select, insert, update)
 from src.util.utilities import row_as_array
 
 SALTROUNDS = 10
@@ -78,6 +78,23 @@ class Database:
             components_table.c.owner_id == user_id)
         components = self.conn.execute(query).fetchall()
         return row_as_array(components)
+
+    def get_component_id(self, component_name):
+        """Gets a components id by its name"""
+        query = select(self.components_table.c.id).where(
+            self.components_table.c.name == component_name)
+        result = self.conn.execute(query).fetchone()
+        try:
+            return result[0]
+        except IndexError as err:
+            print(err)
+            return None
+
+    def delete_component(self, component_id):
+        """Removes a component from the db via id"""
+        query = delete(self.components_table).where(
+            self.components_table.c.id == component_id)
+        self.conn.execute(query)
 
     def get_user_id(self, username):
         """Gets a users id by their username"""

@@ -50,12 +50,29 @@ class ComponentsScreen(tk.Frame):
 
         render_button = tk.Button(buttons_frame, command=lambda: render_component(
             self.component_text.get('1.0', tk.END)), text='Render component')
-        render_button.grid(column=1, row=1, sticky='e')
+        render_button.grid(column=2, row=1, sticky='e')
 
         save_changes_button = tk.Button(
             buttons_frame, text='Save changes', command=lambda: self.save_changes())
+        save_changes_button.grid(column=1, row=1, sticky='e')
 
-        save_changes_button.grid(column=0, row=1, sticky='e')
+        delete_component_button = tk.Button(
+            buttons_frame, text='Delete component', command=lambda: self.delete_component(
+                self.components_list.get(tk.ANCHOR)))
+        delete_component_button.grid(row=1, column=0)
+
+    def delete_component(self, component_name):
+        """Deletes a component"""
+        component_id = self.controller.database.get_component_id(
+            component_name)
+        self.controller.database.delete_component(component_id)
+        self.controller.user.components = self.controller.database.get_user_components(
+            self.controller.user.user_id)
+        if self.collection == 'user':
+            self.load_user_components()
+        else:
+            self.load_community_components()
+        self.component_text.delete('1.0', tk.END)
 
     def save_changes(self):
         """Saves changes to current component"""

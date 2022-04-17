@@ -10,6 +10,7 @@ class TestUtil(unittest.TestCase):
         print("Set up goes here")
 
     def test_render_component(self):
-        """Testing that a user can be added to the database"""
+        """Testing that a component can be sent to the back end, which consecutively
+        responds with an HTML file"""
         react_component = render_component('return <h1>asdf</h1>', True)
         self.assertEqual(react_component.text[0:15], '<!DOCTYPE html>')
