@@ -1,4 +1,4 @@
-""""This is the """
+""""Index module for ReactComponentViewer."""
 # Import the required libraries
 import tkinter as tk
 from tkinter import Frame, font as tkfont, Button
