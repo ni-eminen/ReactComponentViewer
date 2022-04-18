@@ -45,3 +45,8 @@ Generate the test coverage via:
 poetry run invoke coverage-report
 ```
 A report will be generated to ReactComponentViewer root file.
+
+### linting
+```bash
+poetry run invoke lint
+```
