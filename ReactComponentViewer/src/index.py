@@ -66,7 +66,11 @@ class ReactComponentViewer(tk.Tk):
         self.show_login()
 
     def show_frame(self, page_name):
-        '''Show a frame for the given page name'''
+        """Show a frame for the given page name.
+
+        Args:
+            page_name (string): Name of the page.
+        """
         if self.user.logged_in is False:
             return
 

@@ -9,6 +9,12 @@ class LoginScreen(tk.Frame):
     """Login screen"""
 
     def __init__(self, parent, controller):
+        """Initializes the login screen.
+
+        Args:
+            parent (Frame): Parent frame
+            controller (Tk): Controller for state
+        """
         tk.Frame.__init__(self, parent)
         self.screen_size = '500x700'
         self.controller = controller
@@ -54,14 +60,24 @@ class LoginScreen(tk.Frame):
             row=3, column=1, sticky='e', padx=10, pady=5)
 
     def log_in_init(self, username, password):
-        """Perform necessary actions to log the user in and initialize the application"""
+        """Perform necessary actions to log the user in and initialize the application.
+
+        Args:
+            username (string): Username
+            password (string): Password
+        """
         self.validate_login(username, password)
         self.controller.show_frame("AddComponentScreen")
         self.controller.user.components = self.controller.database.get_user_components(
             self.controller.user.user_id)
 
     def validate_login(self, username, password):
-        """Validates the username and password"""
+        """Validates the username and password.
+
+        Args:
+            username (string): Username
+            password (string): Password
+        """
         is_auth = self.controller.database.verify_password(
             username.get(), password.get())
         if is_auth:
@@ -72,5 +88,10 @@ class LoginScreen(tk.Frame):
             self.controller.user = user
 
     def create_user(self, username, password):
-        """Adds user to the database"""
+        """Creates a user to the database.
+
+        Args:
+            username (string): Username
+            password (string): Password
+        """
         self.controller.database.add_user(username.get(), password.get())

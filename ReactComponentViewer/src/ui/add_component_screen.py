@@ -10,13 +10,22 @@ class AddComponentScreen(tk.Frame):
     """Class for add component screen"""
 
     def save_component(self, name, component):
-        """Asks db class to save a component"""
+        """Asks db class to save a component.
+
+        Args:
+            name (string): Name for the component
+            component (string): The component
+        """
         self.controller.database.save_component(
             name, self.controller.user.user_id, component)
         POP.destroy()
 
     def save_component_dialog(self, component):
-        """Opens a dialog for saving component"""
+        """Opens a dialog for saving component
+
+        Args:
+            component (string): The component that will be saved.
+        """
         global POP  # pylint: disable=global-statement
         POP = Toplevel(self)
         POP.title('Save component')
@@ -43,6 +52,13 @@ class AddComponentScreen(tk.Frame):
         frame.pack()
 
     def __init__(self, parent, controller):
+        """Initializes the add component screen.
+
+        Args:
+            parent: Parent frame.
+            controller (Tk): Controller for state.
+        """
+
         placeholder = """const [counter, setCounter] = useState(0);
 
 return (

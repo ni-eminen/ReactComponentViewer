@@ -2,7 +2,10 @@
 
 
 class User:
-    """User class"""
+    """User class
+    Attributes:
+        username: string
+    """
 
     def __init__(self, username=''):
         self.username = username
@@ -16,11 +19,20 @@ class User:
                 logged in: {self.logged_in}"
 
     def change_username(self, new_username):
-        """Changes username"""
+        """Changes the users username
+
+        Args:
+            new_username (string): New username
+        """
         self.username = new_username
 
     def patch_component(self, component_id, component_string):
-        """Patches a component in users components"""
+        """Patches a component in users components
+
+        Args:
+            component_id (number): Id of the component
+            component_string (string): New component string
+        """
         print(component_string)
         for component in self.components:
             if component[2] == component_id:
