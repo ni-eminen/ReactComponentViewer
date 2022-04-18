@@ -8,4 +8,8 @@
 | 5.4. | 8    | Creating a login to the UI and setting up the database, removing pywebview |
 | 6.4. | 8    | Implementing a proper login |
 | 12.4. | 8    | Tests, configuring addons, project uml |
-|  Total hrs     | 67 | 
+| 14.4. | 16   | Learning to use Docker and hosting the backend |
+| 15.4. | 1    | Refactoring |
+| 16.4. | 10    | Components screen, encoding, database |
+| 17.4. | 10    | Deleting components, finalizing components screen, testing |
+|  Total hrs     | 104 | 
