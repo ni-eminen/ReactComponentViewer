@@ -14,3 +14,14 @@
 - Refactoring
 - User class
 - database class implemented
+
+## Week 5
+
+- Hosting for the backend was implemented via DigitalOcean's servers.
+- Refactoring
+- Save button added
+- Components screen implemented
+- List for components
+- Component patching / updating implemented
+- Major testing imprevements. Tests now cover up to 80 %.
+- Database naming for tests / other functionalities
