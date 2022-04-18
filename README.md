@@ -7,7 +7,7 @@ Be sure to checkout the backend code for this project at [RCV-backend](https://g
 
 ### Documentation</br>
 
-[uml](https://github.com/ni-eminen/ReactComponentViewer/blob/main/laskarit/viikko4/uml.jpeg)</br>
+[UML and sequence diagram example](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/architecture.md)</br>
 [requirement spec](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/vaatimusmaarittely.md)</br>
 [timetable](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/timetable.md)</br>
 [changelog]( https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/changelog.md)</br>
