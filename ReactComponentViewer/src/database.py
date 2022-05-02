@@ -54,14 +54,24 @@ class Database:
         Args:
             username (_type_): Username for the user
             password (_type_): Password for the user
-        """
-        salt = bcrypt.gensalt(rounds=SALTROUNDS)
-        hashed = bcrypt.hashpw(password.encode('utf8'), salt)
-        pw_hash = hashed.decode('utf8')
 
-        ins = insert(self.users_table).values(
-            username=username, password=pw_hash)
-        self.engine.execute(ins)
+        Returns:
+            boolean: Whether user creation was a success or not.
+        """
+
+        exists = self.user_exists(username)
+
+        if not exists:
+            salt = bcrypt.gensalt(rounds=SALTROUNDS)
+            hashed = bcrypt.hashpw(password.encode('utf8'), salt)
+            pw_hash = hashed.decode('utf8')
+
+            ins = insert(self.users_table).values(
+                username=username, password=pw_hash)
+            self.engine.execute(ins)
+            return True
+        print('User creation failed: User exists')
+        return False
 
     def verify_password(self, username, password):
         """Verifies user password
@@ -156,6 +166,22 @@ class Database:
         if len(result) > 0:
             return result[0]
         return 0
+
+    def user_exists(self, username):
+        """Checks if a user exists with a given username.
+
+        Args:
+            username (string): Username
+
+        Returns:
+            bool: True if exists, False is not
+        """
+        query = select(self.users_table.c.username).where(
+            self.users_table.c.username == username)
+        result = self.conn.execute(query).fetchone()
+        if len(result) > 0:
+            return True
+        return False
 
     def get_user_components(self, user_id):
         """Gets a users components
