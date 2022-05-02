@@ -11,26 +11,26 @@ All users are essentially the same. There are no 'admins' or other privileged us
 ## UI
 
 The application is composed of the following screens:
-Login
-Component collection
-Add a new component
-Edit component
-Credits
+Login ✅
+Component collection ✅
+Add a new component ✅
+Edit component ✅
 
-The UX flow of the application is self explanatory. Starting from the login screen that lands you on to the Component collection upon a successfull logon. From there on the user can add new components, edit them, remove them and of course inspect them.
+### UX flow
+Starting from the login screen that lands you on to the Component collection upon a successfull logon. From there on the user can add new components, edit them, remove them and of course inspect them.
 
 ## Features in MVP
 
 ### Before logging in
 
-- User can create a new user or log on to an existing account
+- User can create a new user or log on to an existing account ✅
 
 ### Logged in
 #### User is able to
-- Create a new component
-- Inspect components
-- Edit components
-- Delete components
+- Create a new component ✅
+- Inspect components ✅
+- Edit components ✅
+- Delete components ✅
 
 ## Further refinement
 
