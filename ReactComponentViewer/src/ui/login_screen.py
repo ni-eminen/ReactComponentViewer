@@ -66,10 +66,12 @@ class LoginScreen(tk.Frame):
             username (string): Username
             password (string): Password
         """
-        self.validate_login(username, password)
-        self.controller.show_frame("AddComponentScreen")
-        self.controller.user.components = self.controller.database.get_user_components(
-            self.controller.user.user_id)
+        logged_in = self.validate_login(username, password)
+        if logged_in:
+            self.controller.show_frame("AddComponentScreen")
+            self.controller.user.components = self.controller.database.get_user_components(
+                self.controller.user.user_id)
+
 
     def validate_login(self, username, password):
         """Validates the username and password.
@@ -86,6 +88,8 @@ class LoginScreen(tk.Frame):
                 user.username)
             user.logged_in = True
             self.controller.user = user
+            return True
+        return False
 
     def create_user(self, username, password):
         """Creates a user to the database.
