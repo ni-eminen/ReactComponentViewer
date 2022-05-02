@@ -141,6 +141,6 @@ sequenceDiagram
 
 Other functionalities are of similar protocol. All UI classes derive the displayed data from the User object and / or the database.
 
-## Inefficiencies in program structure to be resolved
+## Inefficiencies in program structure (to be resolved)
 
 The readability of the code could be improved by creating a service class for some of the UI functionalities. As of now, they are residing in the associated UI classes and the database class.
