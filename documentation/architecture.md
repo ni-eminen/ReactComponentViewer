@@ -81,101 +81,66 @@ RCV class diagram:
 
 ## Data storing
 
-RCV stores all component and user data in an sqlite database. All data storage related operations are performed in [database.py](https://github.com/ni-eminen/ReactComponentViewer/blob/main/ReactComponentViewer/src/database.py) via the SQLAlchemy ORM. Tables are automatically initialized on the launch of the application.
+RCV stores all component and user data in an sqlite database. All data storage related operations are performed in [database.py](https://github.com/ni-eminen/ReactComponentViewer/blob/main/ReactComponentViewer/src/database.py) via the SQLAlchemy ORM. Tables are automatically initialized on the initial launch of the application.
 
-### Tiedostot
+### Backend
 
-Sovellus tallettaa käyttäjien ja todojen tiedot erillisiin tiedostoihin.
+RCV is, relatively speaking, a backend heavy application. Its backend is hosted in DigitalOcean via Docker. The backend source code is available at [RCV-backend](https://github.com/ni-eminen/RCV-backend).
 
-Sovelluksen juureen sijoitettu [konfiguraatiotiedosto](./kayttoohje.md#konfiguraatiotiedosto) [.env](https://github.com/ohjelmistotekniikka-hy/python-todo-app/blob/master/.env) määrittelee tiedostojen nimet.
+The backend is listening for POST requests which contain the desired component's code. The code is then built and bundled into a single HTML file that is returned and subsequently displayed in a browser by RCV.
 
-Sovellus tallettaa tehtävät CSV-tiedostoon seuraavassa formaatissa:
+## Functionalities
 
-```
-65eef813-330a-4714-887b-2bda4d744487;opiskele pythonia;1;kalle
-5749b61f-f312-45ef-94a1-71a758feee2b;kirjoita dokumentaatio;0;matti
-```
+RCV as sequence diagrams.
 
-Eli tehtävän id, sisältö, tehtystatus (0 = ei tehty, 1 = on tehty) ja käyttäjän käyttäjätunnus. Kenttien arvot erotellaan puolipisteellä (;).
+### Logging in
 
-Käyttäjät tallennetaan SQLite-tietokannan tauluun `users`, joka alustetaan [initialize_database.py](https://github.com/ohjelmistotekniikka-hy/python-todo-app/blob/master/src/initialize_database.py)-tiedostossa.
-
-## Päätoiminnallisuudet
-
-Kuvataan seuraavaksi sovelluksen toimintalogiikka muutaman päätoiminnallisuuden osalta sekvenssikaaviona.
-
-### Käyttäjän kirjaantuminen
-
-Kun kirjautumisnäkymän syötekenttiin kirjoitetetataan käyttäjätunnus ja salasana, jonka jälkeen klikataan painiketta _Login_, etenee sovelluksen kontrolli seuraavasti:
+A typical login flow is implemented. Username's are stored as plain text whereas the passwords are hashed using the [bcrypt](https://pypi.org/project/bcrypt/) library.
 
 ```mermaid
 sequenceDiagram
   actor User
   participant UI
-  participant TodoService
-  participant UserRepository
   User->>UI: click "Login" button
-  UI->>TodoService: login("kalle", "kalle123")
-  TodoService->>UserRepository: find_by_username("kalle")
-  UserRepository-->>TodoService: user
-  TodoService-->>UI: user
-  UI->UI: show_todos_view()
+  UI->>Database: validate_login("root", "root1!")
+  Database-->>UI: True | False
+  UI->UI: show_frame("AddComponentScreen")
 ```
 
-Painikkeen painamiseen reagoiva [tapahtumankäsittelijä](https://github.com/ohjelmistotekniikka-hy/python-todo-app/blob/master/src/ui/login_view.py#L18) kutsuu sovelluslogiikan `TodoService` metodia [login](https://github.com/ohjelmistotekniikka-hy/python-todo-app/blob/master/src/services/todo_service.py#L87) antaen parametriksi käyttäjätunnuksen ja salasanan. Sovelluslogiikka selvittää `UserRepository`:n avulla onko käyttäjätunnus olemassa. Jos on, tarkastetaan täsmääkö salasanat. Jos salasanat täsmäävät, kirjautuminen onnistuu. Tämän seurauksena käyttöliittymä vaihtaa näkymäksi `TodosView`:n, eli sovelluksen varsinaisen päänäkymän ja renderöi näkymään kirjautuneen käyttäjän todot eli tekemättömät tehtävät.
+Clicking on 'log in' calls the function [log_in_init](https://github.com/ni-eminen/ReactComponentViewer/blob/57b6535f08fae88797d16e9883c5d1711ddbb417/ReactComponentViewer/src/ui/login_screen.py#L62) which encapsules the login functionality. The database class is then called to verify the given credentials.
 
-### Uuden käyttäjän luominen
+### Creating a new user
 
-Kun uuden käyttäjän luomisnäkymässä on syötetty käyttäjätunnus, joka ei ole jo käytössä sekä salasana, jonka jälkeen klikataan painiketta "Create" etenee sovelluksen kontrolli seuraavasti:
+When the user clicks on the 'Create account' button, the following sequence begins:
 
 ```mermaid
 sequenceDiagram
   actor User
   participant UI
-  participant TodoService
-  participant UserRepository
-  participant matti
-  User->>UI: click "Create user" button
-  UI->>TodoService: create_user("matti", "matti123")
-  TodoService->>UserRepository: find_by_username("matti")
-  UserRepository-->>TodoService: None
-  TodoService->>matti: User("matti", "matti123")
-  TodoService->>UserRepository: create(matti)
-  UserRepository-->>TodoService: user
-  TodoService-->>UI: user
-  UI->>UI: show_todos_view()
+  User->>UI: click "Create account" button
+  UI->>DB: add_user("root", "root1!")
+  DB->>UI: True | False
 ```
 
-[Tapahtumakäsittelijä](https://github.com/ohjelmistotekniikka-hy/python-todo-app/blob/master/src/ui/create_user_view.py#L18) kutsuu sovelluslogiikan metodia [create_user](https://github.com/ohjelmistotekniikka-hy/python-todo-app/blob/master/src/services/todo_service.py#L130) antaen parametriksi luotavan käyttäjän tiedot. Sovelluslogiikka selvittää `UserRepository`:n avulla onko käyttäjätunnus olemassa. Jos ei, eli uuden käyttäjän luominen on mahdollista, luo sovelluslogiikka `User`-olion ja tallettaa sen kutsumalla `UserRepository`:n metodia `create`. Tästä seurauksena on se, että käyttöliittymä vaihtaa näkymäksi `TodosView`:n. Luotu käyttäjä kirjataan automaattisesti sisään.
+### Creating a new component
 
-### Todon luominen
-
-Uuden todon luovan "Create"-painikkeen klikkaamisen jälkeen sovelluksen kontrolli eteneeseuraavasti:
+New components can be created that will the be displayed under the user's components and under the community components for other users.
 
 ```mermaid
 sequenceDiagram
   actor User
   participant UI
-  participant TodoService
-  participant TodoRepository
-  participant todo
-  User->>UI: click "Create"
-  UI->>TodoService: create_todo("vie roskat")
-  TodoService->>todo: Todo("vie roskat", kalle)
-  TodoService->>TodoRepository: create(todo)
-  TodoRepository-->>TodoService: todo
-  TodoService-->>UI: todo
-  UI->>UI: initialize_todo_list()
+  participant Database
+  User->>UI: click "Save component"
+  UI->>Database: save_component("Button", "user_id", "component_string")
+  Database->>Sqlite: INSERT ("Button", "user_id", "component_string"
 ```
+[save component dialog](https://github.com/ni-eminen/ReactComponentViewer/blob/6db6ffd2d915059fc1b4ad03e4a74b85dcaefc14/ReactComponentViewer/src/ui/add_component_screen.py#L23) calls the database object's [save_component](https://github.com/ni-eminen/ReactComponentViewer/blob/6db6ffd2d915059fc1b4ad03e4a74b85dcaefc14/ReactComponentViewer/src/database.py#L97) function. 
 
-[Tapahtumakäsittelijä](https://github.com/ohjelmistotekniikka-hy/python-todo-app/blob/master/src/ui/todos_view.py#L106) kutsuu sovelluslogiikan metodia [create_todo](https://github.com/ohjelmistotekniikka-hy/python-todo-app/blob/master/src/services/todo_service.py#L49) antaen parametriksi luotavan työn tiedot. Sovelluslogiikka luo uuden `Todo`-olion ja tallettaa sen kutsumalla `TodoRepository`:n metodia `create`. Tästä seurauksena on se, että käyttöliittymä päivittää näytettävät todot kutsumalla omaa metodiaan `initialize_todo_list`.
+### Other functionalities
 
-### Muut toiminnallisuudet
+Other functionalities are of similar protocol. All UI classes derive the displayed data from the User object and / or the database.
 
-Sama periaate toistoo sovelluksen kaikissa toiminnallisuuksissa, käyttöliittymän tapahtumakäsittelijä kutsuu sopivaa sovelluslogiikan metodia, sovelluslogiikka päivittää todojen tai kirjautuneen käyttäjän tilaa. Kontrollin palatessa käyttäliittymään, päivitetään tarvittaessa todojen lista sekä aktiivinen näkyvä.
+## Inefficiencies in program structure to be resolved
 
-## Ohjelman rakenteeseen jääneet heikkoudet
-
-### Käyttöliittymä
-
-Graafisen käyttöliittymän koodissa on jonkin verran toisteisuuttaa, josta voisi toteuttaa omia komponenttejaan. Esimerkiksi pylint ilmoittaa toisteisesta koodista luokissa [CreateUserview](https://github.com/ohjelmistotekniikka-hy/python-todo-app/blob/master/src/ui/create_user_view.py) ja [LoginView](https://github.com/ohjelmistotekniikka-hy/python-todo-app/blob/master/src/ui/login_view.py).
+The readability of the code could be improved by creating a service class for some of the UI functionalities. As of now, they are residing in the associated UI classes and the database class.
