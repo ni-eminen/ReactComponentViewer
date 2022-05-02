@@ -13,4 +13,5 @@
 | 16.4. | 10    | Components screen, encoding, database |
 | 17.4. | 10    | Deleting components, finalizing components screen, testing |
 | 18.4. | 5    | Documentation and small fixes |
-|  Total hrs     | 109 | 
+| 2.5. | 10    | Architecture documentation, requirement spec and minor changes to application |
+|  Total hrs     | 119 | 
