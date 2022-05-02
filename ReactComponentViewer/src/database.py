@@ -18,7 +18,8 @@ class Database:
         """Initializes the database with tables.
 
         Args:
-            db_filename (str, optional): Desired name of the database file. Defaults to 'database.db'.
+            db_filename (str, optional): Desired name of the database file. 
+            Defaults to 'database.db'.
         """
         print('creating connnection')
         self.engine = create_engine(
@@ -166,22 +167,6 @@ class Database:
         if len(result) > 0:
             return result[0]
         return 0
-
-    def user_exists(self, username):
-        """Checks if a user exists with a given username.
-
-        Args:
-            username (string): Username
-
-        Returns:
-            bool: True if exists, False is not
-        """
-        query = select(self.users_table.c.username).where(
-            self.users_table.c.username == username)
-        result = self.conn.execute(query).fetchone()
-        if len(result) > 0:
-            return True
-        return False
 
     def get_user_components(self, user_id):
         """Gets a users components
