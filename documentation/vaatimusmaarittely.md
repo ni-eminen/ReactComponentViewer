@@ -17,7 +17,7 @@ Add a new component ✅
 Edit component ✅
 
 ### UX flow
-Starting from the login screen that lands you on to the Component collection upon a successfull logon. From there on the user can add new components, edit them, remove them and of course inspect them.
+Starting from the login screen that lands you on to the Component collection upon a successful logon. From there on the user can add new components, edit them, remove them and of course inspect them.
 
 ## Features in MVP
 
