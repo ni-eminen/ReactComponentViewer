@@ -28,8 +28,6 @@ The program will prompt you to sign in or to create a new account:
 
 You can create a new account and login by typing out the desired username and password and pressing on `Create account` followed by `Login`.
 
-
-
 ## Creating a component
 
 After logging on you will land on the create component screen. You can input your own component or render the example by clicking on `Render component`. 
