@@ -2,7 +2,7 @@
 
 Download the source code of the [latest release](https://github.com/ni-eminen/ReactComponentViewer/releases).
 
-## Konfigurointi
+## Configuring
 
 There is no need for configuring for the user. A local database file is created and initialized with a schema automatically
 
