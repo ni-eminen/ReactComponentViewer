@@ -24,7 +24,7 @@ poetry run invoke start
 
 The program will prompt you to sign in or to create a new account:
 
-![](../imgs/login_screen.png)
+![](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/imgs/login_screen.png)
 
 You can create a new account and login by typing out the desired username and password and pressing on `Create account` followed by `Login`.
 
@@ -32,17 +32,17 @@ You can create a new account and login by typing out the desired username and pa
 
 After logging on you will land on the create component screen. You can input your own component or render the example by clicking on `Render component`. 
 
-![](../imgs/add_component_screen.png)
+![](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/imgs/add_component_screen.png)
 
 You can save a new component by clicking on `Save component` and typing out the desired name for the new component and clicking OK.
 
-![](../imgs/saving_commponent.png)
+![](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/imgs/saving_component.png)
 
 ## Viewing components
 
 You can navigate to the components screen by clicking on the buttons on the sidebar.
 
-![](../imgs/components_screen.png)
+![](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/imgs/components_screen.png)
 
 ## Editing components
 
