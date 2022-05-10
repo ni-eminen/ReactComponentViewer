@@ -15,22 +15,24 @@ Login
 Component collection
 Add a new component
 Edit component
-Credits
 
-The UX flow of the application is self explanatory. Starting from the login screen that lands you on to the Component collection upon a successfull logon. From there on the user can add new components, edit them, remove them and of course inspect them.
+The UX flow of the application is as follows: After a succesfull logon you are landed on the components screen.. From there on the user can add new components, edit them, remove them and of course inspect them using the side bar as a navigation tool.
 
 ## Features in MVP
 
 ### Before logging in
 
-- User can create a new user or log on to an existing account
+- User can create a new user or log on to an existing account ✅
 
 ### Logged in
+
 #### User is able to
-- Create a new component
-- Inspect components
-- Edit components
-- Delete components
+
+- Create a new component ✅
+- Inspect their own components ✅
+- Inspect other users' components ✅
+- Edit components ✅
+- Delete components ✅
 
 ## Further refinement
 
@@ -42,3 +44,4 @@ After the MVP the application could be enriched via the following features
 - Categories
 - For you page
 - Stories
+- Components recommendation system
