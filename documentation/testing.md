@@ -34,13 +34,6 @@ The software is test ready after installation as described in the [instructions]
 
 Tests can be run regardless of database state or other user inflicted changes.
 
-### Toiminnallisuudet
+### Features
 
-Kaikki [määrittelydokumentin](./vaatimusmaarittely.md#perusversion-tarjoama-toiminnallisuus) ja käyttöohjeen listaamat toiminnallisuudet on käyty läpi. Kaikkien toiminnallisuuksien yhteydessä on syötekentät yritetty täyttää myös virheellisillä arvoilla kuten tyhjillä.
-
-## Sovellukseen jääneet laatuongelmat
-
-Sovellus ei anna tällä hetkellä järkeviä virheilmoituksia, seuraavissa tilanteissa:
-
-- Konfiguraation määrittelemiin tiedostoihin ei ole luku/kirjoitusoikeuksia
-- SQLite tietokantaa ei ole alustettu, eli `python -m poetry run invoke build`-komentoa ei ole suoritettu
+All the [features](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/vaatimusmaarittely.md) have been tested with both good and bad inputs such as non-existant users and bad components.
