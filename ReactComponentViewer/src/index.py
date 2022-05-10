@@ -1,4 +1,4 @@
-""""This is the """
+""""Index module for ReactComponentViewer."""
 # Import the required libraries
 import tkinter as tk
 from tkinter import Frame, font as tkfont, Button
@@ -23,15 +23,11 @@ class ReactComponentViewer(tk.Tk):
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
 
-        # the container is where we'll stack a bunch of frames
-        # on top of each other, then the one we want visible
-        # will be raised above the others
+        # The container will contain all the frames in a stack.
+        # Frames will then be popped to the top of the stack.
         container = Frame(self)
         container.grid(row=0, column=0, sticky='nsew')
         container.grid_rowconfigure(0, weight=1)
-
-        # sidebar = Frame(container, bg='#89CFF0', width=100)
-        # sidebar.grid(row=0, column=0, sticky='nsew')
 
         # sidebar
         sidebar = tk.Frame(container, width=200, bg='white', height=500,
@@ -66,7 +62,11 @@ class ReactComponentViewer(tk.Tk):
         self.show_login()
 
     def show_frame(self, page_name):
-        '''Show a frame for the given page name'''
+        """Show a frame for the given page name.
+
+        Args:
+            page_name (string): Name of the page.
+        """
         if self.user.logged_in is False:
             return
 

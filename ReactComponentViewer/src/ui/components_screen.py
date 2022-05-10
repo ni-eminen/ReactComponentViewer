@@ -7,6 +7,12 @@ class ComponentsScreen(tk.Frame):
     """Class for components window"""
 
     def __init__(self, parent, controller):
+        """Initializes components screen.
+
+        Args:
+            parent (Frame): Parent Frame for this Frame.
+            controller (Tk): Controller for state.
+        """
         tk.Frame.__init__(self, parent)
         self.collection = 'user'
         self.components = []
@@ -62,7 +68,11 @@ class ComponentsScreen(tk.Frame):
         delete_component_button.grid(row=1, column=0)
 
     def delete_component(self, component_name):
-        """Deletes a component"""
+        """Deletes a component.
+
+        Args:
+            component_name (string): Component's name
+        """
         component_id = self.controller.database.get_component_id(
             component_name)
         self.controller.database.delete_component(component_id)
@@ -75,7 +85,11 @@ class ComponentsScreen(tk.Frame):
         self.component_text.delete('1.0', tk.END)
 
     def save_changes(self):
-        """Saves changes to current component"""
+        """Saves changes to current component.
+
+        Returns:
+            string: The saved text
+        """
         new_text = self.component_text.get('1.0', tk.END)
         selected_name = self.components_list.get(tk.ANCHOR)
         selected = None
@@ -98,27 +112,33 @@ class ComponentsScreen(tk.Frame):
         return new_text
 
     def load_components(self, components):
-        """Loads the component listbox with the components given"""
+        """Loads the component listbox with the components given.
+
+        Args:
+            components (ndarray): Components list
+        """
         self.components = components
         self.components_list.delete(0, tk.END)
         for component in components:
             self.components_list.insert(tk.END, component[0])
 
     def load_community_components(self):
-        """Loads the community components"""
+        """Loads the community components.
+        """
         self.collection = 'community'
         components = self.controller.database.get_community_components()
         self.load_components(components)
 
     def load_user_components(self):
-        """Loads the user's components on to the components listbox"""
+        """Loads the user's components on to the components listbox.
+        """
         self.collection = 'user'
         components = self.controller.database.get_user_components(
             self.controller.user.user_id)
         self.load_components(components)
 
     def listbox_onselect(self, _select):
-        """Sets the component text on display"""
+        """Sets the component text on display."""
         self.component_text.delete('1.0', tk.END)
         component_text = ''
         selected = self.components_list.get(tk.ANCHOR)

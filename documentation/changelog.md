@@ -25,3 +25,9 @@
 - Component patching / updating implemented
 - Major testing imprevements. Tests now cover up to 80 %.
 - Database naming for tests / other functionalities
+
+## Week 6
+
+- Login validation improved
+- User creation validation improved with duplicate checking
+- Miscellanious finishing touches
