@@ -1,6 +1,6 @@
 """Test module for ReactComponentViewer"""
 import unittest
-from src.util.utilities import render_component
+from src.util.utilities import render_component, row_as_array
 
 
 class TestUtil(unittest.TestCase):
@@ -14,3 +14,12 @@ class TestUtil(unittest.TestCase):
         responds with an HTML file"""
         react_component = render_component('return <h1>asdf</h1>', True)
         self.assertEqual(react_component.text[0:15], '<!DOCTYPE html>')
+
+    def test_row_as_array(self):
+        """Row as array makes arrays returned by the database mutable."""
+        rows_as_array = row_as_array([[123], [234], [345]])
+        rows_as_array[1] = 555
+        self.assertEqual(rows_as_array[1], 555)
+
+
+
