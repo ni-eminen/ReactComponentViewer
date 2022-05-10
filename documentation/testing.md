@@ -22,17 +22,17 @@ Omitting the UI layer, test coverage is high at near 80 % coverage.
 
 ![](./imgs/coverage.png)
 
-Testaamatta jäivät _build.py_- ja _initialize_database.py_-tiedostojen suorittaminen komentoriviltä. Nämä olisi myös voinut jättää testikattavuuden ulkopuolelle. Lisäksi testaatamatta jäivät mm. tilanteet, joissa haetaan kirjautumattoman käyttäjän tekemättömät tehtävät ja uloskirjautuminen.
+The database class could be tested further if deemed necessary.
 
-## Järjestelmätestaus
+## UI testing
 
-Sovelluksen järjestelmätestaus on suoritettu manuaalisesti.
+UI is tested manually as there are not many good testing libraries for testing tkinter UI's. Tkinter asynchronous handling of callbacks also makes for some adverse testing environments.
 
-### Asennus ja konfigurointi
+### Installation and configuration
 
-Sovellus on haettu ja sitä on testattu [käyttöohjeen](./kayttoohje.md) kuvaamalla tavalla sekä macOS- että Linux-ympäristöön. Testauksessa on käytetty myös eri konfiguraatioita _.env_-tiedoston kautta.
+The software is test ready after installation as described in the [instructions](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/instructions.md).
 
-Sovellusta on testattu sekä tilanteissa, joissa käyttäjät ja työt tallettavat tiedostot ovat olleet olemassa ja joissa niitä ei ole ollut jolloin ohjelma on luonut ne itse.
+Tests can be run regardless of database state or other user inflicted changes.
 
 ### Toiminnallisuudet
 
