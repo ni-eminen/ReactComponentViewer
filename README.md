@@ -8,7 +8,7 @@ Be sure to checkout the backend code for this project at [RCV-backend](https://g
 
 ### Documentation</br>
 
-[Release](https://github.com/ni-eminen/ReactComponentViewer/releases/tag/week7)</br>
+[Latest release](https://github.com/ni-eminen/ReactComponentViewer/releases/tag/week7)</br>
 [Getting started](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/instructions.md)</br>
 [UML and sequence diagram example](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/architecture.md)</br>
 [requirement spec](https://github.com/ni-eminen/ReactComponentViewer/blob/main/documentation/vaatimusmaarittely.md)</br>
